@@ -1350,7 +1350,7 @@ function renderChart() {
                 data: totals,
                 backgroundColor: colors,
                 borderWidth: 2,
-                borderColor: '#ffffff'
+                borderColor: '#0a1631'
             }]
         },
         options: {
@@ -1361,7 +1361,8 @@ function renderChart() {
                     position: 'right',
                     labels: {
                         font: { size: 10, family: 'Inter' },
-                        boxWidth: 12
+                        boxWidth: 12,
+                        color: '#e2e8f0'
                     }
                 },
                 tooltip: {
@@ -1414,20 +1415,20 @@ function switchViewTab(view) {
     document.getElementById('viewInvestorTable').classList.add('hidden');
     document.getElementById('filterContainer').classList.add('hidden');
 
-    document.getElementById('viewBtnExpenses').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900";
-    document.getElementById('viewBtnKasbon').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900";
-    document.getElementById('viewBtnInvestor').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900";
+    document.getElementById('viewBtnExpenses').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-blue-200 hover:text-white";
+    document.getElementById('viewBtnKasbon').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-blue-200 hover:text-white";
+    document.getElementById('viewBtnInvestor').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-blue-200 hover:text-white";
 
     if (view === 'expenses') {
         document.getElementById('viewExpensesTable').classList.remove('hidden');
         document.getElementById('filterContainer').classList.remove('hidden');
-        document.getElementById('viewBtnExpenses').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white text-slate-900 shadow-sm";
+        document.getElementById('viewBtnExpenses').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-900/50";
     } else if (view === 'kasbon') {
         document.getElementById('viewKasbonTable').classList.remove('hidden');
-        document.getElementById('viewBtnKasbon').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white text-slate-900 shadow-sm";
+        document.getElementById('viewBtnKasbon').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-900/50";
     } else if (view === 'investor') {
         document.getElementById('viewInvestorTable').classList.remove('hidden');
-        document.getElementById('viewBtnInvestor').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white text-slate-900 shadow-sm";
+        document.getElementById('viewBtnInvestor').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-900/50";
     }
 }
 

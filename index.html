@@ -6,8 +6,8 @@
     <title>Dashboard Monitoring Keuangan Project</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts Inter & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Chart.js -->
@@ -18,6 +18,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'Inter', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -34,55 +35,278 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 15% 10%, rgba(30, 64, 175, 0.45) 0%, transparent 45%),
+                        radial-gradient(circle at 85% 15%, rgba(14, 116, 144, 0.3) 0%, transparent 40%),
+                        radial-gradient(circle at 50% 85%, rgba(29, 78, 216, 0.35) 0%, transparent 50%),
+                        linear-gradient(150deg, #030712 0%, #061229 28%, #0a1f44 65%, #020510 100%) !important;
+            background-attachment: fixed !important;
+            color: #f1f5f9 !important;
+            min-height: 100vh;
+        }
+
+        /* Luxury Scrollbar */
         .custom-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #060d1f; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 4px; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+        /* Luxury Glass Cards */
+        .bg-white {
+            background: rgba(10, 22, 47, 0.88) !important;
+            border-color: rgba(59, 130, 246, 0.22) !important;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .bg-white:hover {
+            border-color: rgba(96, 165, 250, 0.38) !important;
+        }
+
+        /* High Contrast Headings and Titles */
+        .text-slate-900,
+        .text-slate-800 {
+            color: #ffffff !important;
+        }
+        .text-slate-700 {
+            color: #e2e8f0 !important;
+        }
+        .text-slate-600 {
+            color: #cbd5e1 !important;
+        }
+        .text-slate-500,
+        .text-slate-400 {
+            color: #94a3b8 !important;
+        }
+
+        /* Borders in cards and sections */
+        .border-slate-200,
+        .border-slate-100,
+        .divide-slate-100 {
+            border-color: rgba(59, 130, 246, 0.18) !important;
+        }
+        .border-slate-300 {
+            border-color: rgba(59, 130, 246, 0.32) !important;
+        }
+
+        /* Sub-containers & Header Bar */
+        .bg-slate-50,
+        .bg-slate-100 {
+            background-color: rgba(6, 15, 34, 0.75) !important;
+            border-color: rgba(59, 130, 246, 0.2) !important;
+        }
+        .bg-slate-200 {
+            background-color: rgba(14, 29, 60, 0.85) !important;
+        }
+        .bg-slate-900 {
+            background: linear-gradient(135deg, rgba(5, 12, 28, 0.98) 0%, rgba(10, 25, 54, 0.98) 50%, rgba(6, 15, 34, 0.98) 100%) !important;
+            border-color: rgba(59, 130, 246, 0.25) !important;
+        }
+        .bg-slate-800 {
+            background-color: rgba(9, 21, 46, 0.92) !important;
+            border-color: rgba(59, 130, 246, 0.22) !important;
+        }
+
+        /* Form Inputs, Selects, and Textareas */
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            background-color: #060e20 !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(59, 130, 246, 0.35) !important;
+        }
+        input::placeholder,
+        textarea::placeholder {
+            color: #64748b !important;
+        }
+        input:focus,
+        select:focus,
+        textarea:focus {
+            background-color: #08142a !important;
+            border-color: #38bdf8 !important;
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3) !important;
+            outline: none !important;
+        }
+        select option {
+            background-color: #081329 !important;
+            color: #ffffff !important;
+        }
+
+        /* Buttons with White Background in Original Layout */
+        button.bg-white,
+        a.bg-white {
+            background: rgba(15, 30, 62, 0.9) !important;
+            border-color: rgba(59, 130, 246, 0.3) !important;
+            color: #f1f5f9 !important;
+        }
+        button.bg-white:hover,
+        a.bg-white:hover {
+            background: rgba(29, 78, 216, 0.35) !important;
+            border-color: rgba(96, 165, 250, 0.5) !important;
+            color: #ffffff !important;
+        }
+
+        /* Status Badges & Accents - Luminous & High Contrast */
+        .text-emerald-500,
+        .text-emerald-600,
+        .text-emerald-700,
+        .text-emerald-800 {
+            color: #34d399 !important;
+        }
+        .text-amber-500,
+        .text-amber-600,
+        .text-amber-700,
+        .text-amber-800 {
+            color: #fbbf24 !important;
+        }
+        .text-blue-500,
+        .text-blue-600,
+        .text-blue-700,
+        .text-blue-800 {
+            color: #60a5fa !important;
+        }
+        .text-rose-500,
+        .text-rose-600,
+        .text-rose-700,
+        .text-rose-800 {
+            color: #f87171 !important;
+        }
+        .text-purple-500,
+        .text-purple-600,
+        .text-purple-700,
+        .text-purple-800 {
+            color: #c084fc !important;
+        }
+
+        .bg-blue-50, .bg-blue-100, .bg-blue-200 {
+            background-color: rgba(30, 58, 138, 0.45) !important;
+            color: #93c5fd !important;
+            border-color: rgba(59, 130, 246, 0.3) !important;
+        }
+        .bg-amber-50, .bg-amber-100, .bg-amber-200 {
+            background-color: rgba(180, 83, 9, 0.35) !important;
+            color: #fde68a !important;
+            border-color: rgba(245, 158, 11, 0.3) !important;
+        }
+        .bg-emerald-50, .bg-emerald-100, .bg-emerald-200 {
+            background-color: rgba(6, 95, 70, 0.4) !important;
+            color: #a7f3d0 !important;
+            border-color: rgba(16, 185, 129, 0.3) !important;
+        }
+        .bg-rose-50, .bg-rose-100, .bg-rose-200 {
+            background-color: rgba(159, 18, 57, 0.4) !important;
+            color: #fecdd3 !important;
+            border-color: rgba(244, 63, 94, 0.3) !important;
+        }
+        .bg-purple-50, .bg-purple-100, .bg-purple-200 {
+            background-color: rgba(88, 28, 135, 0.4) !important;
+            color: #e9d5ff !important;
+            border-color: rgba(168, 85, 247, 0.3) !important;
+        }
+
+        /* View Switcher Active State */
+        #viewBtnExpenses.bg-white,
+        #viewBtnKasbon.bg-white,
+        #viewBtnInvestor.bg-white {
+            background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.45) !important;
+            border-color: rgba(96, 165, 250, 0.4) !important;
+        }
+
+        /* Tables */
+        table thead {
+            background: rgba(4, 10, 24, 0.95) !important;
+            color: #93c5fd !important;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.3) !important;
+        }
+        table thead th {
+            color: #93c5fd !important;
+        }
+        table tbody tr {
+            border-bottom: 1px solid rgba(59, 130, 246, 0.12) !important;
+        }
+        table tbody tr:hover {
+            background-color: rgba(30, 58, 138, 0.28) !important;
+        }
+        table tbody tr[class*="bg-amber-"] {
+            background-color: rgba(180, 83, 9, 0.22) !important;
+        }
+        table tbody tr[class*="bg-emerald-"] {
+            background-color: rgba(6, 95, 70, 0.22) !important;
+        }
+        table tbody tr[class*="bg-blue-"] {
+            background-color: rgba(30, 58, 138, 0.22) !important;
+        }
+        table tfoot {
+            background: rgba(4, 10, 24, 0.95) !important;
+            border-top: 2px solid rgba(59, 130, 246, 0.35) !important;
+            color: #ffffff !important;
+        }
+
+        /* Modals and Dialogs */
+        .fixed.inset-0.z-50,
+        .fixed.inset-0.z-\[55\],
+        .fixed.inset-0.z-\[60\] {
+            background-color: rgba(2, 6, 23, 0.78) !important;
+            backdrop-filter: blur(8px) !important;
+        }
+        #categorySettingsModal > div,
+        #categoryModal > div,
+        #deleteCategoryModal > div,
+        #confirmModal > div {
+            background: #09152d !important;
+            border: 1px solid rgba(59, 130, 246, 0.35) !important;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 25px rgba(37, 99, 235, 0.2) !important;
+            color: #f8fafc !important;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col pb-12">
+<body class="min-h-screen flex flex-col pb-12">
 
     <!-- Toast Notification Container -->
     <div id="toastContainer" class="fixed top-5 right-5 z-[60] flex flex-col gap-2 pointer-events-none"></div>
 
     <!-- Modal Pengaturan Kategori -->
-    <div id="categorySettingsModal" onclick="if(event.target === this) closeCategorySettingsModal()" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
-            <div class="bg-slate-900 text-white px-5 py-4 flex items-center justify-between flex-shrink-0">
+    <div id="categorySettingsModal" onclick="if(event.target === this) closeCategorySettingsModal()" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-[#09152d] text-white rounded-2xl border border-blue-500/35 shadow-2xl shadow-blue-950/80 w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
+            <div class="bg-gradient-to-r from-[#060e20] to-[#0c1e40] text-white px-5 py-4 flex items-center justify-between flex-shrink-0 border-b border-blue-900/40">
                 <div>
-                    <h3 class="font-bold text-base flex items-center gap-2">
-                        <i class="fa-solid fa-sliders text-blue-400"></i>
+                    <h3 class="font-bold text-base flex items-center gap-2 text-white">
+                        <i class="fa-solid fa-sliders text-sky-400"></i>
                         <span>Pengaturan Kategori Biaya</span>
                     </h3>
-                    <p class="text-[11px] text-slate-400 mt-0.5">Atur urutan, anggaran per kategori, status aktif, dan perilaku pemilihan kategori</p>
+                    <p class="text-[11px] text-blue-200/80 mt-0.5">Atur urutan, anggaran per kategori, status aktif, dan perilaku pemilihan kategori</p>
                 </div>
-                <button type="button" onclick="closeCategorySettingsModal()" class="text-slate-400 hover:text-white transition p-1" title="Tutup">
+                <button type="button" onclick="closeCategorySettingsModal()" class="text-blue-200 hover:text-white transition p-1" title="Tutup">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
 
             <div class="p-5 overflow-y-auto custom-scrollbar space-y-6 flex-grow">
                 <!-- Pengaturan Umum Kategori -->
-                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-4">
+                <div class="bg-[#060e20] border border-blue-900/50 rounded-xl p-4 space-y-4">
                     <div class="flex items-center justify-between gap-2">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                            <i class="fa-solid fa-gear text-blue-600"></i> Pengaturan Umum Kategori
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
+                            <i class="fa-solid fa-gear text-sky-400"></i> Pengaturan Umum Kategori
                         </h4>
-                        <span id="settingsDirtyBadge" class="text-[11px] font-medium text-slate-500">Klik Simpan Perubahan untuk menerapkan</span>
+                        <span id="settingsDirtyBadge" class="text-[11px] font-medium text-slate-300">Klik Simpan Perubahan untuk menerapkan</span>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
-                            <label for="settingDefaultCategory" class="block text-xs font-semibold text-slate-700 mb-1">Kategori Default Form Biaya</label>
-                            <select id="settingDefaultCategory" onchange="onCategorySettingsFieldChange()" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs bg-white text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <label for="settingDefaultCategory" class="block text-xs font-semibold text-slate-200 mb-1">Kategori Default Form Biaya</label>
+                            <select id="settingDefaultCategory" onchange="onCategorySettingsFieldChange()" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-xs bg-[#09152d] text-white focus:ring-2 focus:ring-sky-400 focus:outline-none">
                                 <option value="">Pilih Manual Setiap Input</option>
                             </select>
                             <p class="text-[10px] text-slate-400 mt-1">Otomatis terpilih saat membuka form atau selesai input biaya.</p>
                         </div>
                         <div>
-                            <label for="settingCategorySort" class="block text-xs font-semibold text-slate-700 mb-1">Urutan Tampilan Kategori</label>
-                            <select id="settingCategorySort" onchange="onCategorySettingsFieldChange()" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs bg-white text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <label for="settingCategorySort" class="block text-xs font-semibold text-slate-200 mb-1">Urutan Tampilan Kategori</label>
+                            <select id="settingCategorySort" onchange="onCategorySettingsFieldChange()" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-xs bg-[#09152d] text-white focus:ring-2 focus:ring-sky-400 focus:outline-none">
                                 <option value="manual">Urutan Kustom (Manual)</option>
                                 <option value="name">Nama Kategori (A–Z)</option>
                                 <option value="amount_desc">Realisasi Terbesar</option>
@@ -90,14 +314,14 @@
                             <p class="text-[10px] text-slate-400 mt-1">Berlaku di daftar kategori, pilihan input, filter, & grafik.</p>
                         </div>
                         <div>
-                            <label for="settingBudgetAlertPercent" class="block text-xs font-semibold text-slate-700 mb-1">Ambang Peringatan Anggaran (%)</label>
-                            <input type="number" id="settingBudgetAlertPercent" min="1" max="100" value="80" oninput="onCategorySettingsFieldChange()" onchange="onCategorySettingsFieldChange()" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs bg-white text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <label for="settingBudgetAlertPercent" class="block text-xs font-semibold text-slate-200 mb-1">Ambang Peringatan Anggaran (%)</label>
+                            <input type="number" id="settingBudgetAlertPercent" min="1" max="100" value="80" oninput="onCategorySettingsFieldChange()" onchange="onCategorySettingsFieldChange()" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-xs bg-[#09152d] text-white focus:ring-2 focus:ring-sky-400 focus:outline-none">
                             <p class="text-[10px] text-slate-400 mt-1">Tandai kuning jika serapan anggaran mencapai persentase ini.</p>
                         </div>
                     </div>
 
-                    <label class="flex items-center gap-2.5 text-xs font-medium text-slate-700 cursor-pointer pt-1">
-                        <input type="checkbox" id="settingShowSection" checked onchange="onCategorySettingsFieldChange()" class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+                    <label class="flex items-center gap-2.5 text-xs font-medium text-slate-200 cursor-pointer pt-1">
+                        <input type="checkbox" id="settingShowSection" checked onchange="onCategorySettingsFieldChange()" class="w-4 h-4 rounded border-blue-900/60 bg-[#09152d] text-blue-600 focus:ring-sky-400">
                         <span>Tampilkan panel ringkasan & kelola kategori di halaman utama dashboard</span>
                     </label>
                 </div>
@@ -107,14 +331,14 @@
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
-                                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-list-check text-blue-600"></i> Konfigurasi & Budget Per Kategori
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-list-check text-sky-400"></i> Konfigurasi & Budget Per Kategori
                                 </h4>
-                                <span id="settingsTotalBudgetPreview" class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[11px] font-bold">Total Budget: Rp 0</span>
+                                <span id="settingsTotalBudgetPreview" class="px-2 py-0.5 rounded-full bg-blue-500/20 text-sky-300 border border-blue-400/30 text-[11px] font-bold">Total Budget: Rp 0</span>
                             </div>
-                            <p id="settingsOrderNote" class="text-[11px] text-slate-500 mt-0.5">Atur urutan, status aktif, dan budget setiap kategori, lalu klik Simpan Perubahan.</p>
+                            <p id="settingsOrderNote" class="text-[11px] text-slate-400 mt-0.5">Atur urutan, status aktif, dan budget setiap kategori, lalu klik Simpan Perubahan.</p>
                         </div>
-                        <button type="button" onclick="openCategoryModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm self-start sm:self-auto">
+                        <button type="button" onclick="openCategoryModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-blue-900/50 self-start sm:self-auto">
                             <i class="fa-solid fa-plus"></i>
                             <span>Tambah Kategori</span>
                         </button>
@@ -126,16 +350,16 @@
                 </div>
             </div>
 
-            <div class="px-5 py-3.5 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 flex-shrink-0">
-                <button type="button" onclick="resetCategoriesToDefault()" class="px-3.5 py-2 bg-white hover:bg-rose-50 text-rose-600 border border-slate-200 hover:border-rose-200 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
+            <div class="px-5 py-3.5 bg-[#060e20] border-t border-blue-900/50 flex flex-wrap items-center justify-between gap-2 flex-shrink-0">
+                <button type="button" onclick="resetCategoriesToDefault()" class="px-3.5 py-2 bg-[#09152d] hover:bg-rose-950/50 text-rose-300 border border-rose-800/40 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
                     <i class="fa-solid fa-rotate-left"></i>
                     <span>Reset ke Kategori Bawaan</span>
                 </button>
                 <div class="flex items-center gap-2">
-                    <button type="button" onclick="closeCategorySettingsModal()" class="px-4 py-2 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded-lg text-xs font-semibold transition">
+                    <button type="button" onclick="closeCategorySettingsModal()" class="px-4 py-2 bg-[#09152d] hover:bg-slate-800 text-slate-200 border border-blue-900/60 rounded-lg text-xs font-semibold transition">
                         Batal
                     </button>
-                    <button type="button" id="saveCategorySettingsBtn" onclick="saveCategorySettingsChanges()" class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                    <button type="button" id="saveCategorySettingsBtn" onclick="saveCategorySettingsChanges()" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-blue-900/50">
                         <i class="fa-solid fa-check"></i>
                         <span>Simpan Perubahan</span>
                     </button>
@@ -145,52 +369,52 @@
     </div>
 
     <!-- Modal Tambah / Edit Kategori -->
-    <div id="categoryModal" onclick="if(event.target === this) closeCategoryModal()" class="fixed inset-0 z-[55] bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-md overflow-hidden">
-            <div class="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
-                <h3 id="categoryModalTitle" class="font-bold text-base flex items-center gap-2">
-                    <i class="fa-solid fa-tag text-blue-400"></i>
+    <div id="categoryModal" onclick="if(event.target === this) closeCategoryModal()" class="fixed inset-0 z-[55] bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-[#09152d] text-white rounded-2xl border border-blue-500/35 shadow-2xl shadow-blue-950/80 w-full max-w-md overflow-hidden">
+            <div class="bg-gradient-to-r from-[#060e20] to-[#0c1e40] text-white px-5 py-4 flex items-center justify-between border-b border-blue-900/40">
+                <h3 id="categoryModalTitle" class="font-bold text-base flex items-center gap-2 text-white">
+                    <i class="fa-solid fa-tag text-sky-400"></i>
                     <span>Tambah Kategori Baru</span>
                 </h3>
-                <button type="button" onclick="closeCategoryModal()" class="text-slate-400 hover:text-white transition p-1" title="Tutup">
+                <button type="button" onclick="closeCategoryModal()" class="text-blue-200 hover:text-white transition p-1" title="Tutup">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
             <form id="categoryForm" onsubmit="handleCategorySubmit(event)" class="p-5 space-y-4">
                 <input type="hidden" id="catEditId" value="">
                 <div>
-                    <label for="catName" class="block text-xs font-semibold text-slate-700 mb-1">Nama Kategori *</label>
-                    <input type="text" id="catName" required maxlength="50" placeholder="Contoh: Pekerjaan Persiapan" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <label for="catName" class="block text-xs font-semibold text-slate-200 mb-1">Nama Kategori *</label>
+                    <input type="text" id="catName" required maxlength="50" placeholder="Contoh: Pekerjaan Persiapan" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm bg-[#060e20] text-white focus:ring-2 focus:ring-sky-400 focus:outline-none">
                     <p class="text-[11px] text-slate-400 mt-1">Digunakan pada form input biaya, filter tabel, dan grafik.</p>
                 </div>
                 <div>
-                    <label for="catDesc" class="block text-xs font-semibold text-slate-700 mb-1">Keterangan / Detail (Opsional)</label>
-                    <input type="text" id="catDesc" maxlength="80" placeholder="Contoh: Pembelian bahan bangunan utama" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <label for="catDesc" class="block text-xs font-semibold text-slate-200 mb-1">Keterangan / Detail (Opsional)</label>
+                    <input type="text" id="catDesc" maxlength="80" placeholder="Contoh: Pembelian bahan bangunan utama" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm bg-[#060e20] text-white focus:ring-2 focus:ring-sky-400 focus:outline-none">
                 </div>
                 <div>
-                    <label for="catBudget" class="block text-xs font-semibold text-slate-700 mb-1">Batas Anggaran / Budget Kategori (Rp, Opsional)</label>
-                    <input type="number" id="catBudget" min="0" step="1000" placeholder="0 (Kosongkan jika tanpa batas anggaran)" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <label for="catBudget" class="block text-xs font-semibold text-slate-200 mb-1">Batas Anggaran / Budget Kategori (Rp, Opsional)</label>
+                    <input type="number" id="catBudget" min="0" step="1000" placeholder="0 (Kosongkan jika tanpa batas anggaran)" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm bg-[#060e20] text-white focus:ring-2 focus:ring-sky-400 focus:outline-none">
                     <p class="text-[11px] text-slate-400 mt-1">Isi nominal pagu anggaran untuk memantau persentase serapan biaya.</p>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-2">Warna Penanda & Grafik</label>
+                    <label class="block text-xs font-semibold text-slate-200 mb-2">Warna Penanda & Grafik</label>
                     <div class="flex flex-wrap items-center gap-2">
                         <div id="catColorSwatches" class="flex flex-wrap items-center gap-2"></div>
-                        <label class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-100 hover:bg-slate-200 px-2.5 py-1.5 rounded-lg cursor-pointer transition border border-slate-200">
+                        <label class="flex items-center gap-1.5 text-xs text-slate-200 bg-[#060e20] hover:bg-slate-800 px-2.5 py-1.5 rounded-lg cursor-pointer transition border border-blue-900/60">
                             <input type="color" id="catColor" value="#0284c7" oninput="syncColorSwatchSelection(this.value)" class="w-5 h-5 rounded cursor-pointer border-0 bg-transparent p-0">
                             <span>Custom</span>
                         </label>
                     </div>
                 </div>
-                <label class="flex items-center gap-2.5 text-xs font-medium text-slate-700 bg-slate-50 border border-slate-200 rounded-xl p-3 cursor-pointer">
-                    <input type="checkbox" id="catActive" checked class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+                <label class="flex items-center gap-2.5 text-xs font-medium text-slate-200 bg-[#060e20] border border-blue-900/50 rounded-xl p-3 cursor-pointer">
+                    <input type="checkbox" id="catActive" checked class="w-4 h-4 rounded border-blue-900/60 bg-[#09152d] text-blue-600 focus:ring-sky-400">
                     <span>Kategori Aktif (tampil dalam pilihan saat input pemakaian dana baru)</span>
                 </label>
-                <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
-                    <button type="button" onclick="closeCategoryModal()" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">
+                <div class="flex items-center justify-end gap-2 pt-3 border-t border-blue-900/50">
+                    <button type="button" onclick="closeCategoryModal()" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-300 hover:bg-slate-800 transition">
                         Batal
                     </button>
-                    <button type="submit" id="catSubmitBtn" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                    <button type="submit" id="catSubmitBtn" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-blue-900/50">
                         <i class="fa-solid fa-check"></i>
                         <span>Simpan Kategori</span>
                     </button>
@@ -200,10 +424,10 @@
     </div>
 
     <!-- Modal Konfirmasi Hapus Kategori -->
-    <div id="deleteCategoryModal" onclick="if(event.target === this) closeDeleteCategoryModal()" class="fixed inset-0 z-[55] bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-md overflow-hidden">
-            <div class="bg-rose-950 text-white px-5 py-4 flex items-center justify-between">
-                <h3 class="font-bold text-base flex items-center gap-2">
+    <div id="deleteCategoryModal" onclick="if(event.target === this) closeDeleteCategoryModal()" class="fixed inset-0 z-[55] bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-[#09152d] text-white rounded-2xl border border-blue-500/35 shadow-2xl shadow-blue-950/80 w-full max-w-md overflow-hidden">
+            <div class="bg-rose-950 text-white px-5 py-4 flex items-center justify-between border-b border-rose-900/50">
+                <h3 class="font-bold text-base flex items-center gap-2 text-white">
                     <i class="fa-solid fa-triangle-exclamation text-rose-400"></i>
                     <span>Hapus Kategori Biaya</span>
                 </h3>
@@ -212,33 +436,33 @@
                 </button>
             </div>
             <div class="p-5 space-y-4">
-                <div class="flex items-center gap-2.5 bg-slate-50 border border-slate-200 rounded-xl p-3">
+                <div class="flex items-center gap-2.5 bg-[#060e20] border border-blue-900/50 rounded-xl p-3">
                     <span id="deleteCatColorDot" class="w-3.5 h-3.5 rounded-full flex-shrink-0"></span>
                     <div>
-                        <div id="deleteCatNameDisplay" class="font-bold text-sm text-slate-900"></div>
-                        <div id="deleteCatDescDisplay" class="text-[11px] text-slate-500"></div>
+                        <div id="deleteCatNameDisplay" class="font-bold text-sm text-white"></div>
+                        <div id="deleteCatDescDisplay" class="text-[11px] text-slate-400"></div>
                     </div>
                 </div>
 
-                <p id="deleteCatMessage" class="text-xs text-slate-600 leading-relaxed"></p>
+                <p id="deleteCatMessage" class="text-xs text-slate-200 leading-relaxed"></p>
 
-                <div id="deleteCatReassignWrapper" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-3 space-y-2">
-                    <label for="deleteCatReassignSelect" class="block text-xs font-semibold text-amber-900">
+                <div id="deleteCatReassignWrapper" class="hidden bg-amber-950/40 border border-amber-500/40 rounded-xl p-3 space-y-2">
+                    <label for="deleteCatReassignSelect" class="block text-xs font-semibold text-amber-300">
                         Pindahkan transaksi ke kategori:
                     </label>
-                    <select id="deleteCatReassignSelect" class="w-full px-3 py-2 border border-amber-300 rounded-lg text-xs bg-white text-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none"></select>
+                    <select id="deleteCatReassignSelect" class="w-full px-3 py-2 border border-amber-500/40 rounded-lg text-xs bg-[#060e20] text-white focus:ring-2 focus:ring-amber-400 focus:outline-none"></select>
                 </div>
 
-                <div id="deleteCatBlockedAlert" class="hidden bg-rose-50 border border-rose-200 rounded-xl p-3 text-xs text-rose-800 flex items-start gap-2">
-                    <i class="fa-solid fa-circle-info mt-0.5 text-rose-600"></i>
+                <div id="deleteCatBlockedAlert" class="hidden bg-rose-950/50 border border-rose-500/40 rounded-xl p-3 text-xs text-rose-200 flex items-start gap-2">
+                    <i class="fa-solid fa-circle-info mt-0.5 text-rose-400"></i>
                     <span>Tambahkan minimal satu kategori pengganti terlebih dahulu sebelum menghapus kategori terakhir yang masih memiliki transaksi.</span>
                 </div>
 
-                <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
-                    <button type="button" onclick="closeDeleteCategoryModal()" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">
+                <div class="flex items-center justify-end gap-2 pt-3 border-t border-blue-900/50">
+                    <button type="button" onclick="closeDeleteCategoryModal()" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-300 hover:bg-slate-800 transition">
                         Batal
                     </button>
-                    <button type="button" id="confirmDeleteCatBtn" onclick="confirmDeleteCategory()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                    <button type="button" id="confirmDeleteCatBtn" onclick="confirmDeleteCategory()" class="px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-rose-900/50">
                         <i class="fa-solid fa-trash-can"></i>
                         <span>Ya, Hapus</span>
                     </button>
@@ -248,32 +472,32 @@
     </div>
 
     <!-- Header & Navigation -->
-    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-30 shadow-lg">
+    <header class="bg-gradient-to-r from-[#060e20]/95 via-[#0b1b3d]/95 to-[#071126]/95 text-white border-b border-blue-500/25 sticky top-0 z-30 shadow-2xl shadow-blue-950/50 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 
                 <!-- Left Title & Editable Project Name -->
                 <div class="flex items-center gap-3">
-                    <div class="bg-blue-600 p-2.5 rounded-xl shadow-md text-white">
+                    <div class="bg-gradient-to-br from-blue-600 to-indigo-600 p-2.5 rounded-xl shadow-lg shadow-blue-600/30 text-white border border-blue-400/30">
                         <i class="fa-solid fa-chart-line text-xl"></i>
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
-                            <span class="text-xs uppercase tracking-wider font-semibold text-blue-400">Sistem Kas & Kasbon Project</span>
-                            <span class="bg-emerald-500/20 text-emerald-300 text-[10px] px-2 py-0.5 rounded-full font-medium">Live System</span>
+                            <span class="text-xs uppercase tracking-wider font-bold text-sky-400">Sistem Kas & Kasbon Project</span>
+                            <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] px-2 py-0.5 rounded-full font-medium">Live System</span>
                         </div>
                         <div class="flex items-center gap-2 group flex-wrap">
-                            <h1 id="projectNameDisplay" class="text-xl sm:text-2xl font-bold tracking-tight text-white">Project pembangunan Ruko 3 Lantai</h1>
+                            <h1 id="projectNameDisplay" class="text-xl sm:text-2xl font-black tracking-tight text-white">Project pembangunan Ruko 3 Lantai</h1>
                             <button id="editProjectNameBtn" type="button" onclick="editProjectName()" class="text-slate-400 hover:text-white transition-colors text-sm opacity-70 group-hover:opacity-100" title="Ubah Nama Project">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
                             <form id="projectNameEditBox" onsubmit="saveProjectNameEdit(event)" class="hidden items-center gap-1.5 flex-wrap">
-                                <input type="text" id="projectNameInput" required class="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-600 text-white text-sm font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none min-w-[220px]" placeholder="Masukkan nama project...">
+                                <input type="text" id="projectNameInput" required class="px-2.5 py-1 rounded-lg bg-[#060e20] border border-blue-500/40 text-white text-sm font-semibold focus:ring-2 focus:ring-blue-400 focus:outline-none min-w-[220px]" placeholder="Masukkan nama project...">
                                 <button type="submit" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-sm">
                                     <i class="fa-solid fa-check"></i>
                                     <span>Simpan Perubahan</span>
                                 </button>
-                                <button type="button" onclick="cancelProjectNameEdit()" class="px-2.5 py-1 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg text-xs font-semibold transition">
+                                <button type="button" onclick="cancelProjectNameEdit()" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold transition border border-slate-700">
                                     Batal
                                 </button>
                             </form>
@@ -283,19 +507,19 @@
 
                 <!-- Action Controls -->
                 <div class="flex flex-wrap items-center gap-2">
-                    <button onclick="openCategorySettingsModal()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-amber-200 border border-slate-700 rounded-lg text-xs sm:text-sm font-medium transition flex items-center gap-2 shadow-sm">
+                    <button onclick="openCategorySettingsModal()" class="px-3.5 py-2 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 hover:text-amber-200 border border-amber-500/40 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 shadow-sm">
                         <i class="fa-solid fa-sliders"></i>
                         <span>Pengaturan Kategori</span>
                     </button>
-                    <button onclick="loadDemoData()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-blue-300 hover:text-blue-200 border border-slate-700 rounded-lg text-xs sm:text-sm font-medium transition flex items-center gap-2 shadow-sm">
+                    <button onclick="loadDemoData()" class="px-3.5 py-2 bg-blue-600/20 hover:bg-blue-600/30 text-blue-200 hover:text-white border border-blue-400/30 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 shadow-sm">
                         <i class="fa-solid fa-database"></i>
                         <span>Muat Data Contoh</span>
                     </button>
-                    <button onclick="exportToCSV()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs sm:text-sm font-medium transition flex items-center gap-2 shadow-sm">
+                    <button onclick="exportToCSV()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 shadow-md shadow-emerald-950/40 border border-emerald-400/30">
                         <i class="fa-solid fa-file-excel"></i>
                         <span>Export CSV</span>
                     </button>
-                    <button onclick="confirmResetData()" class="px-3.5 py-2 bg-rose-950 hover:bg-rose-900 text-rose-300 border border-rose-800/50 rounded-lg text-xs sm:text-sm font-medium transition flex items-center gap-2 shadow-sm">
+                    <button onclick="confirmResetData()" class="px-3.5 py-2 bg-rose-950/70 hover:bg-rose-900 text-rose-300 border border-rose-700/50 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 shadow-sm">
                         <i class="fa-solid fa-rotate-left"></i>
                         <span>Reset Data</span>
                     </button>
@@ -310,57 +534,57 @@
         <!-- BAGIAN 1: Ringkasan KPI Kas Utama -->
         <section>
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <i class="fa-solid fa-vault text-blue-600"></i> Ringkasan Budget & Kas Principal Project
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-vault text-sky-400"></i> Ringkasan Budget & Kas Principal Project
                 </h2>
-                <span class="text-xs text-slate-500">Real-time update dari mutasi kas & anggaran</span>
+                <span class="text-xs text-blue-200/80">Real-time update dari mutasi kas & anggaran</span>
             </div>
 
             <!-- Baris Utama: Total Budget, Total Terpakai, Sisa Budget -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
                 <!-- Total Budget -->
-                <div class="bg-white rounded-2xl p-5 border-2 border-blue-200 shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div class="bg-gradient-to-br from-[#0a1836]/95 to-[#0e244d]/95 rounded-2xl p-5 border-2 border-blue-500/40 shadow-xl shadow-blue-950/40 relative overflow-hidden flex flex-col justify-between">
                     <div class="flex items-center justify-between gap-2 mb-2">
-                        <span class="text-xs font-bold uppercase text-blue-700 tracking-wider flex items-center gap-1.5">
+                        <span class="text-xs font-bold uppercase text-sky-400 tracking-wider flex items-center gap-1.5">
                             <i class="fa-solid fa-wallet"></i> Total Budget
                         </span>
-                        <button type="button" onclick="openCategorySettingsModal()" class="px-2.5 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-[11px] font-bold transition flex items-center gap-1" title="Atur Budget Setiap Kategori">
+                        <button type="button" onclick="openCategorySettingsModal()" class="px-2.5 py-1 bg-blue-500/20 hover:bg-blue-500/30 text-blue-200 border border-blue-400/30 rounded-lg text-[11px] font-bold transition flex items-center gap-1" title="Atur Budget Setiap Kategori">
                             <i class="fa-solid fa-sliders"></i>
                             <span>Atur Budget Kategori</span>
                         </button>
                     </div>
-                    <div id="kpiTotalBudget" class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-1">Rp 0</div>
-                    <p id="kpiBudgetSourceNote" class="text-xs text-slate-500">Akumulasi budget dari setiap kategori aktif</p>
+                    <div id="kpiTotalBudget" class="text-2xl sm:text-3xl font-black text-white mb-1">Rp 0</div>
+                    <p id="kpiBudgetSourceNote" class="text-xs text-blue-200/80">Akumulasi budget dari setiap kategori aktif</p>
                 </div>
 
                 <!-- Total Terpakai -->
-                <div class="bg-white rounded-2xl p-5 border-2 border-amber-200 shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div class="bg-gradient-to-br from-[#0a1836]/95 to-[#241a10]/95 rounded-2xl p-5 border-2 border-amber-500/40 shadow-xl shadow-amber-950/30 relative overflow-hidden flex flex-col justify-between">
                     <div class="flex items-center justify-between gap-2 mb-2">
-                        <span class="text-xs font-bold uppercase text-amber-700 tracking-wider flex items-center gap-1.5">
+                        <span class="text-xs font-bold uppercase text-amber-400 tracking-wider flex items-center gap-1.5">
                             <i class="fa-solid fa-chart-pie"></i> Total Terpakai
                         </span>
-                        <span id="kpiBudgetUsagePctBadge" class="px-2.5 py-0.5 bg-amber-100 text-amber-800 rounded-full text-[11px] font-bold">0%</span>
+                        <span id="kpiBudgetUsagePctBadge" class="px-2.5 py-0.5 bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded-full text-[11px] font-bold">0%</span>
                     </div>
-                    <div id="kpiBudgetUsed" class="text-2xl sm:text-3xl font-extrabold text-amber-700 mb-1">Rp 0</div>
-                    <p id="kpiBudgetUsedNote" class="text-xs text-slate-500">Total realisasi pengeluaran tercatat</p>
+                    <div id="kpiBudgetUsed" class="text-2xl sm:text-3xl font-black text-amber-400 mb-1">Rp 0</div>
+                    <p id="kpiBudgetUsedNote" class="text-xs text-blue-200/80">Total realisasi pengeluaran tercatat</p>
                 </div>
 
                 <!-- Sisa Budget -->
-                <div id="kpiBudgetRemainingCard" class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-5 border border-slate-700 shadow-md relative overflow-hidden flex flex-col justify-between">
+                <div id="kpiBudgetRemainingCard" class="bg-gradient-to-br from-[#0d224b] via-[#113165] to-[#07142d] text-white rounded-2xl p-5 border border-blue-400/40 shadow-2xl shadow-blue-950/60 relative overflow-hidden flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between gap-2 mb-2">
-                            <span class="text-xs font-bold uppercase text-slate-300 tracking-wider flex items-center gap-1.5">
+                            <span class="text-xs font-bold uppercase text-blue-200 tracking-wider flex items-center gap-1.5">
                                 <i class="fa-solid fa-piggy-bank"></i> Sisa Budget
                             </span>
-                            <span id="kpiBudgetRemainingBadge" class="px-2 py-0.5 bg-emerald-500/30 text-emerald-300 rounded-full text-[11px] font-bold">TERSEDIA</span>
+                            <span id="kpiBudgetRemainingBadge" class="px-2 py-0.5 bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 rounded-full text-[11px] font-bold">TERSEDIA</span>
                         </div>
                         <div id="kpiBudgetRemaining" class="text-2xl sm:text-3xl font-black text-emerald-400 mb-1">Rp 0</div>
                     </div>
                     <div>
-                        <div class="w-full bg-white/15 h-2 rounded-full overflow-hidden mt-2 mb-1.5">
-                            <div id="kpiBudgetProgressBar" class="bg-emerald-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                        <div class="w-full bg-blue-950/80 border border-blue-900/50 h-2 rounded-full overflow-hidden mt-2 mb-1.5">
+                            <div id="kpiBudgetProgressBar" class="bg-emerald-400 h-full rounded-full transition-all duration-500 shadow-sm" style="width: 0%"></div>
                         </div>
-                        <p id="kpiBudgetRemainingNote" class="text-xs text-slate-300">Selisih Total Budget dikurangi Total Terpakai</p>
+                        <p id="kpiBudgetRemainingNote" class="text-xs text-blue-200/90">Selisih Total Budget dikurangi Total Terpakai</p>
                     </div>
                 </div>
             </div>
@@ -368,56 +592,56 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 
                 <!-- KPI 1: Total Uang Masuk (Investor -> Principal) -->
-                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm relative overflow-hidden">
-                    <div class="absolute -right-3 -bottom-3 text-emerald-50 opacity-40">
+                <div class="bg-gradient-to-br from-[#0a1836]/95 to-[#0e244d]/95 rounded-2xl p-5 border border-blue-500/25 shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-3 -bottom-3 text-emerald-500/10 pointer-events-none">
                         <i class="fa-solid fa-hand-holding-dollar text-7xl"></i>
                     </div>
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-semibold uppercase text-slate-500 tracking-wider">Total Masuk (Investor)</span>
-                        <span class="p-2 bg-emerald-50 text-emerald-600 rounded-lg text-sm"><i class="fa-solid fa-arrow-down-left"></i></span>
+                        <span class="text-xs font-bold uppercase text-slate-300 tracking-wider">Total Masuk (Investor)</span>
+                        <span class="p-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 rounded-lg text-sm"><i class="fa-solid fa-arrow-down-left"></i></span>
                     </div>
-                    <div id="kpiInvestorTotal" class="text-2xl font-extrabold text-slate-900 mb-1">Rp 0</div>
-                    <p class="text-xs text-slate-500 flex items-center gap-1">
-                        <i class="fa-solid fa-circle-info text-blue-500"></i> Transfer Investor ke Principal
+                    <div id="kpiInvestorTotal" class="text-2xl font-black text-white mb-1">Rp 0</div>
+                    <p class="text-xs text-blue-200/80 flex items-center gap-1">
+                        <i class="fa-solid fa-circle-info text-sky-400"></i> Transfer Investor ke Principal
                     </p>
                 </div>
 
                 <!-- KPI 2: Total Kasbon Dikeluarkan -->
-                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm relative overflow-hidden">
-                    <div class="absolute -right-3 -bottom-3 text-blue-50 opacity-40">
+                <div class="bg-gradient-to-br from-[#0a1836]/95 to-[#0e244d]/95 rounded-2xl p-5 border border-blue-500/25 shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-3 -bottom-3 text-blue-500/10 pointer-events-none">
                         <i class="fa-solid fa-money-bill-transfer text-7xl"></i>
                     </div>
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-semibold uppercase text-slate-500 tracking-wider">Kasbon Dikeluarkan</span>
-                        <span class="p-2 bg-blue-50 text-blue-600 rounded-lg text-sm"><i class="fa-solid fa-arrow-up-right"></i></span>
+                        <span class="text-xs font-bold uppercase text-slate-300 tracking-wider">Kasbon Dikeluarkan</span>
+                        <span class="p-2 bg-blue-500/20 text-sky-400 border border-blue-500/40 rounded-lg text-sm"><i class="fa-solid fa-arrow-up-right"></i></span>
                     </div>
-                    <div id="kpiKasbonTotal" class="text-2xl font-extrabold text-slate-900 mb-1">Rp 0</div>
-                    <p class="text-xs text-slate-500 flex items-center gap-1">
-                        <i class="fa-solid fa-user-check text-slate-400"></i> Total ke Rengga & Ashabil
+                    <div id="kpiKasbonTotal" class="text-2xl font-black text-white mb-1">Rp 0</div>
+                    <p class="text-xs text-blue-200/80 flex items-center gap-1">
+                        <i class="fa-solid fa-user-check text-sky-300"></i> Total ke Rengga & Ashabil
                     </p>
                 </div>
 
                 <!-- KPI 3: Sisa Kas di Tangan Principal (Highlight Utama) -->
-                <div id="kpiPrincipalCard" class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-5 border border-slate-700 shadow-md relative overflow-hidden">
+                <div id="kpiPrincipalCard" class="bg-gradient-to-br from-[#0d224b] via-[#113165] to-[#07142d] text-white rounded-2xl p-5 border border-blue-400/40 shadow-xl relative overflow-hidden">
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-semibold uppercase text-slate-300 tracking-wider">Kas di Tangan Principal</span>
-                        <span id="kpiPrincipalBadge" class="px-2 py-0.5 bg-emerald-500/30 text-emerald-300 rounded text-[11px] font-bold">AMAN</span>
+                        <span class="text-xs font-bold uppercase text-blue-200 tracking-wider">Kas di Tangan Principal</span>
+                        <span id="kpiPrincipalBadge" class="px-2 py-0.5 bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 rounded text-[11px] font-bold">AMAN</span>
                     </div>
                     <div id="kpiPrincipalSisa" class="text-2xl font-black text-emerald-400 mb-1">Rp 0</div>
-                    <p class="text-xs text-slate-300 flex items-center gap-1">
+                    <p class="text-xs text-blue-200/90 flex items-center gap-1">
                         <i class="fa-solid fa-shield-halved text-emerald-400"></i> Uang Investor belum dikasbonkan
                     </p>
                 </div>
 
                 <!-- KPI 4: Total Terpakai vs Sisa Pelaksana -->
-                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm relative overflow-hidden">
+                <div class="bg-gradient-to-br from-[#0a1836]/95 to-[#0e244d]/95 rounded-2xl p-5 border border-blue-500/25 shadow-xl relative overflow-hidden">
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-semibold uppercase text-slate-500 tracking-wider">Realisasi Biaya Lapangan</span>
-                        <span class="p-2 bg-amber-50 text-amber-600 rounded-lg text-sm"><i class="fa-solid fa-receipt"></i></span>
+                        <span class="text-xs font-bold uppercase text-slate-300 tracking-wider">Realisasi Biaya Lapangan</span>
+                        <span class="p-2 bg-amber-500/20 text-amber-400 border border-amber-500/40 rounded-lg text-sm"><i class="fa-solid fa-receipt"></i></span>
                     </div>
-                    <div id="kpiExpensesTotal" class="text-2xl font-extrabold text-slate-900 mb-1">Rp 0</div>
-                    <p id="kpiPelaksanaSisaCombined" class="text-xs text-slate-600 font-medium">
-                        Sisa Kasbon Pelaksana: <span class="font-bold text-slate-900">Rp 0</span>
+                    <div id="kpiExpensesTotal" class="text-2xl font-black text-white mb-1">Rp 0</div>
+                    <p id="kpiPelaksanaSisaCombined" class="text-xs text-blue-200/90 font-medium">
+                        Sisa Kasbon Pelaksana: <span class="font-bold text-emerald-400">Rp 0</span>
                     </p>
                 </div>
 
@@ -430,94 +654,94 @@
             <!-- Kartu Pelaksana Rengga & Ashabil (7 cols) -->
             <div class="lg:col-span-7 space-y-4">
                 <div class="flex items-center justify-between">
-                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-users-gear text-blue-600"></i> Kontrol Kasbon Per Pelaksana
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-users-gear text-sky-400"></i> Kontrol Kasbon Per Pelaksana
                     </h2>
-                    <span class="text-xs text-slate-500">Pertanggungjawaban Uang Muka</span>
+                    <span class="text-xs text-blue-200/80">Pertanggungjawaban Uang Muka</span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     
                     <!-- Card Moh. Rengga -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition">
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <div class="bg-[#0a1836]/90 rounded-2xl border border-blue-500/25 p-5 shadow-xl hover:border-blue-400/40 transition">
+                        <div class="flex items-center justify-between pb-3 border-b border-blue-900/40 mb-3">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center font-bold justify-center text-sm shadow-inner">
+                                <div class="w-10 h-10 rounded-full bg-blue-600/30 text-sky-300 border border-blue-400/30 flex items-center font-bold justify-center text-sm shadow-inner">
                                     MR
                                 </div>
                                 <div>
-                                    <h3 class="font-bold text-slate-900 leading-snug">Moh. Rengga</h3>
-                                    <p class="text-[11px] text-slate-500">Pelaksana Lapangan</p>
+                                    <h3 class="font-bold text-white leading-snug">Moh. Rengga</h3>
+                                    <p class="text-[11px] text-blue-200/80">Pelaksana Lapangan</p>
                                 </div>
                             </div>
-                            <span id="badgeRengga" class="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-slate-100 text-slate-700">Normal</span>
+                            <span id="badgeRengga" class="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-blue-950/60 text-blue-200 border border-blue-500/30">Normal</span>
                         </div>
 
                         <div class="space-y-2 text-sm">
-                            <div class="flex justify-between text-slate-600">
+                            <div class="flex justify-between text-slate-300">
                                 <span>Kasbon Diterima:</span>
-                                <span id="renggaKasbon" class="font-semibold text-slate-900">Rp 0</span>
+                                <span id="renggaKasbon" class="font-bold text-white">Rp 0</span>
                             </div>
-                            <div class="flex justify-between text-slate-600">
+                            <div class="flex justify-between text-slate-300">
                                 <span>Total Belanja / Biaya:</span>
-                                <span id="renggaBiaya" class="font-semibold text-amber-700">Rp 0</span>
+                                <span id="renggaBiaya" class="font-bold text-amber-400">Rp 0</span>
                             </div>
-                            <div class="pt-2 border-t border-slate-100 flex justify-between items-center font-bold">
-                                <span class="text-slate-800">Sisa Uang di Tangan:</span>
-                                <span id="renggaSisa" class="text-base text-emerald-600">Rp 0</span>
+                            <div class="pt-2 border-t border-blue-900/40 flex justify-between items-center font-bold">
+                                <span class="text-slate-100">Sisa Uang di Tangan:</span>
+                                <span id="renggaSisa" class="text-base text-emerald-400 font-black">Rp 0</span>
                             </div>
                         </div>
 
                         <!-- Mini progress bar -->
                         <div class="mt-4">
-                            <div class="flex justify-between text-[11px] text-slate-400 mb-1">
+                            <div class="flex justify-between text-[11px] text-blue-200/80 mb-1">
                                 <span>Serapan Kasbon</span>
-                                <span id="renggaPercent">0%</span>
+                                <span id="renggaPercent" class="font-bold text-sky-300">0%</span>
                             </div>
-                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                                <div id="renggaBar" class="bg-blue-600 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                            <div class="w-full bg-blue-950/80 border border-blue-900/50 h-2 rounded-full overflow-hidden">
+                                <div id="renggaBar" class="bg-blue-500 h-full rounded-full transition-all duration-500 shadow-sm" style="width: 0%"></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Card Moh. Ashabil -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition">
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <div class="bg-[#0a1836]/90 rounded-2xl border border-blue-500/25 p-5 shadow-xl hover:border-blue-400/40 transition">
+                        <div class="flex items-center justify-between pb-3 border-b border-blue-900/40 mb-3">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center font-bold justify-center text-sm shadow-inner">
+                                <div class="w-10 h-10 rounded-full bg-purple-600/30 text-purple-300 border border-purple-400/30 flex items-center font-bold justify-center text-sm shadow-inner">
                                     MA
                                 </div>
                                 <div>
-                                    <h3 class="font-bold text-slate-900 leading-snug">Moh. Ashabil</h3>
-                                    <p class="text-[11px] text-slate-500">Pelaksana Lapangan</p>
+                                    <h3 class="font-bold text-white leading-snug">Moh. Ashabil</h3>
+                                    <p class="text-[11px] text-blue-200/80">Pelaksana Lapangan</p>
                                 </div>
                             </div>
-                            <span id="badgeAshabil" class="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-slate-100 text-slate-700">Normal</span>
+                            <span id="badgeAshabil" class="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-purple-950/60 text-purple-200 border border-purple-500/30">Normal</span>
                         </div>
 
                         <div class="space-y-2 text-sm">
-                            <div class="flex justify-between text-slate-600">
+                            <div class="flex justify-between text-slate-300">
                                 <span>Kasbon Diterima:</span>
-                                <span id="ashabilKasbon" class="font-semibold text-slate-900">Rp 0</span>
+                                <span id="ashabilKasbon" class="font-bold text-white">Rp 0</span>
                             </div>
-                            <div class="flex justify-between text-slate-600">
+                            <div class="flex justify-between text-slate-300">
                                 <span>Total Belanja / Biaya:</span>
-                                <span id="ashabilBiaya" class="font-semibold text-amber-700">Rp 0</span>
+                                <span id="ashabilBiaya" class="font-bold text-amber-400">Rp 0</span>
                             </div>
-                            <div class="pt-2 border-t border-slate-100 flex justify-between items-center font-bold">
-                                <span class="text-slate-800">Sisa Uang di Tangan:</span>
-                                <span id="ashabilSisa" class="text-base text-emerald-600">Rp 0</span>
+                            <div class="pt-2 border-t border-blue-900/40 flex justify-between items-center font-bold">
+                                <span class="text-slate-100">Sisa Uang di Tangan:</span>
+                                <span id="ashabilSisa" class="text-base text-emerald-400 font-black">Rp 0</span>
                             </div>
                         </div>
 
                         <!-- Mini progress bar -->
                         <div class="mt-4">
-                            <div class="flex justify-between text-[11px] text-slate-400 mb-1">
+                            <div class="flex justify-between text-[11px] text-blue-200/80 mb-1">
                                 <span>Serapan Kasbon</span>
-                                <span id="ashabilPercent">0%</span>
+                                <span id="ashabilPercent" class="font-bold text-purple-300">0%</span>
                             </div>
-                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                                <div id="ashabilBar" class="bg-purple-600 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                            <div class="w-full bg-blue-950/80 border border-blue-900/50 h-2 rounded-full overflow-hidden">
+                                <div id="ashabilBar" class="bg-purple-500 h-full rounded-full transition-all duration-500 shadow-sm" style="width: 0%"></div>
                             </div>
                         </div>
                     </div>
@@ -526,45 +750,45 @@
             </div>
 
             <!-- Visual Charts (5 cols) -->
-            <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
+            <div class="lg:col-span-5 bg-[#0a1836]/90 rounded-2xl border border-blue-500/25 p-5 shadow-xl flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-bold text-slate-900 flex items-center gap-2">
-                            <i class="fa-solid fa-chart-pie text-blue-600"></i> Alokasi Biaya Per Kategori
+                        <h3 class="font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-chart-pie text-sky-400"></i> Alokasi Biaya Per Kategori
                         </h3>
-                        <span class="text-xs text-slate-400">Total Pengeluaran</span>
+                        <span class="text-xs text-blue-200/80">Total Pengeluaran</span>
                     </div>
                     <div class="relative h-48 w-full flex items-center justify-center">
                         <canvas id="categoryChart"></canvas>
                     </div>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 text-center">
-                    <p class="text-xs text-slate-500">Visualisasi mempermudah audit pos mana yang menyerap biaya paling dominan.</p>
+                <div class="mt-4 pt-3 border-t border-blue-900/40 text-center">
+                    <p class="text-xs text-blue-200/80">Visualisasi mempermudah audit pos mana yang menyerap biaya paling dominan.</p>
                 </div>
             </div>
 
         </section>
 
         <!-- BAGIAN 2B: Pengelolaan Kategori Biaya -->
-        <section id="categoryManagementSection" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-            <div class="p-4 sm:p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <section id="categoryManagementSection" class="bg-[#0a1836]/90 rounded-2xl border border-blue-500/25 shadow-xl overflow-hidden">
+            <div class="p-4 sm:p-5 border-b border-blue-900/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                     <div class="flex items-center gap-2.5">
-                        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                            <i class="fa-solid fa-tags text-blue-600"></i> Kategori Biaya Project
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-tags text-sky-400"></i> Kategori Biaya Project
                         </h2>
-                        <span id="categoryCountBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-100">
+                        <span id="categoryCountBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-500/20 text-sky-300 border border-blue-400/30">
                             0 Kategori
                         </span>
                     </div>
-                    <p class="text-xs text-slate-500 mt-0.5">Kelola kategori, pantau anggaran per pos pengeluaran, serta atur urutan & status aktif</p>
+                    <p class="text-xs text-blue-200/80 mt-0.5">Kelola kategori, pantau anggaran per pos pengeluaran, serta atur urutan & status aktif</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-2 self-start sm:self-auto">
-                    <button type="button" onclick="openCategorySettingsModal()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
-                        <i class="fa-solid fa-sliders text-slate-600"></i>
+                    <button type="button" onclick="openCategorySettingsModal()" class="px-3.5 py-2 bg-blue-950/60 hover:bg-blue-900/70 text-slate-200 border border-blue-500/30 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+                        <i class="fa-solid fa-sliders text-sky-400"></i>
                         <span>Pengaturan</span>
                     </button>
-                    <button type="button" onclick="openCategoryModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+                    <button type="button" onclick="openCategoryModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-md shadow-blue-900/50">
                         <i class="fa-solid fa-plus"></i>
                         <span>Tambah Kategori</span>
                     </button>
@@ -579,17 +803,17 @@
         </section>
 
         <!-- BAGIAN 3: Form Input Transaksi Cepat (3 Tab) -->
-        <section id="transactionFormSection" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-            <div class="bg-slate-900 text-white p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <section id="transactionFormSection" class="bg-[#0a1836]/90 rounded-2xl border border-blue-500/25 shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-[#060e20] to-[#0c1e40] text-white p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-blue-900/40">
                 <div>
-                    <h2 class="font-bold text-lg flex items-center gap-2">
-                        <i class="fa-solid fa-pen-to-square text-blue-400"></i> Form Pencatatan Transaksi Keuangan
+                    <h2 class="font-bold text-lg flex items-center gap-2 text-white">
+                        <i class="fa-solid fa-pen-to-square text-sky-400"></i> Form Pencatatan Transaksi Keuangan
                     </h2>
-                    <p class="text-xs text-slate-400">Pilih jenis transaksi untuk menambah atau menyimpan perubahan data</p>
+                    <p class="text-xs text-blue-200/80">Pilih jenis transaksi untuk menambah atau menyimpan perubahan data</p>
                 </div>
                 
                 <!-- Nav Tab Form -->
-                <div class="flex bg-slate-800 p-1 rounded-xl gap-1 self-start sm:self-auto">
+                <div class="flex bg-[#060e20] p-1 rounded-xl gap-1 border border-blue-900/40 self-start sm:self-auto">
                     <button type="button" onclick="switchFormTab('investor')" id="tabBtnInvestor" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-blue-600 text-white shadow-sm">
                         <i class="fa-solid fa-hand-holding-dollar mr-1"></i> Dana Investor
                     </button>
@@ -606,35 +830,35 @@
                 
                 <!-- TAB 1: FORM DANA MASUK INVESTOR -->
                 <form id="formInvestor" onsubmit="handleInvestorSubmit(event)" class="space-y-4">
-                    <div id="investorEditBanner" class="hidden items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900">
+                    <div id="investorEditBanner" class="hidden items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-blue-950/70 border border-blue-400/30 text-xs text-sky-200">
                         <div class="flex items-center gap-2 font-semibold">
-                            <i class="fa-solid fa-pen-to-square text-blue-600"></i>
+                            <i class="fa-solid fa-pen-to-square text-sky-400"></i>
                             <span id="investorEditBannerText">Mode Edit Dana Investor — ubah data lalu klik Simpan Perubahan.</span>
                         </div>
-                        <button type="button" onclick="cancelInvestorEdit()" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-blue-200 rounded-lg font-semibold transition flex-shrink-0">
+                        <button type="button" onclick="cancelInvestorEdit()" class="px-2.5 py-1 bg-blue-900/40 hover:bg-blue-800/60 text-slate-200 border border-blue-400/30 rounded-lg font-semibold transition flex-shrink-0">
                             Batal Edit
                         </button>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Tanggal Terima *</label>
-                            <input type="date" id="invDate" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Tanggal Terima *</label>
+                            <input type="date" id="invDate" required class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Investor *</label>
-                            <input type="text" id="invInvestor" required placeholder="Contoh: Bpk. H. Ahmad" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Nama Investor *</label>
+                            <input type="text" id="invInvestor" required placeholder="Contoh: Bpk. H. Ahmad" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Nominal Uang Masuk (Rp) *</label>
-                            <input type="number" id="invAmount" required min="1" placeholder="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Nominal Uang Masuk (Rp) *</label>
+                            <input type="number" id="invAmount" required min="1" placeholder="0" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Keterangan / Tahap Term</label>
-                            <input type="text" id="invDesc" placeholder="Contoh: Modal Awal Term 1" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Keterangan / Tahap Term</label>
+                            <input type="text" id="invDesc" placeholder="Contoh: Modal Awal Term 1" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         </div>
                     </div>
                     <div class="flex flex-wrap justify-end items-center gap-2 pt-2">
-                        <button type="button" id="invCancelEditBtn" onclick="cancelInvestorEdit()" class="hidden px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-sm font-semibold transition items-center gap-1.5">
+                        <button type="button" id="invCancelEditBtn" onclick="cancelInvestorEdit()" class="hidden px-4 py-2.5 bg-blue-950/60 hover:bg-blue-900/60 text-slate-200 border border-blue-500/30 rounded-lg text-sm font-semibold transition items-center gap-1.5">
                             <i class="fa-solid fa-xmark"></i>
                             <span>Batal</span>
                         </button>
@@ -647,38 +871,38 @@
 
                 <!-- TAB 2: FORM PENCAIRAN KASBON -->
                 <form id="formKasbon" onsubmit="handleKasbonSubmit(event)" class="hidden space-y-4">
-                    <div id="kasbonEditBanner" class="hidden items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900">
+                    <div id="kasbonEditBanner" class="hidden items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-blue-950/70 border border-blue-400/30 text-xs text-sky-200">
                         <div class="flex items-center gap-2 font-semibold">
-                            <i class="fa-solid fa-pen-to-square text-blue-600"></i>
+                            <i class="fa-solid fa-pen-to-square text-sky-400"></i>
                             <span id="kasbonEditBannerText">Mode Edit Pencairan Kasbon — ubah data lalu klik Simpan Perubahan.</span>
                         </div>
-                        <button type="button" onclick="cancelKasbonEdit()" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-blue-200 rounded-lg font-semibold transition flex-shrink-0">
+                        <button type="button" onclick="cancelKasbonEdit()" class="px-2.5 py-1 bg-blue-900/40 hover:bg-blue-800/60 text-slate-200 border border-blue-400/30 rounded-lg font-semibold transition flex-shrink-0">
                             Batal Edit
                         </button>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Tanggal Kasbon *</label>
-                            <input type="date" id="kasDate" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Tanggal Kasbon *</label>
+                            <input type="date" id="kasDate" required class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Penerima Kasbon *</label>
-                            <select id="kasPelaksana" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Penerima Kasbon *</label>
+                            <select id="kasPelaksana" required class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-[#060e20]">
                                 <option value="Moh. Rengga">Moh. Rengga</option>
                                 <option value="Moh. Ashabil">Moh. Ashabil</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Nominal Kasbon (Rp) *</label>
-                            <input type="number" id="kasAmount" required min="1" placeholder="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Nominal Kasbon (Rp) *</label>
+                            <input type="number" id="kasAmount" required min="1" placeholder="0" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Keperluan / Catatan</label>
-                            <input type="text" id="kasDesc" placeholder="Contoh: Operasional Belanja Material Minggu 1" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Keperluan / Catatan</label>
+                            <input type="text" id="kasDesc" placeholder="Contoh: Operasional Belanja Material Minggu 1" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         </div>
                     </div>
                     <div class="flex flex-wrap justify-end items-center gap-2 pt-2">
-                        <button type="button" id="kasCancelEditBtn" onclick="cancelKasbonEdit()" class="hidden px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-sm font-semibold transition items-center gap-1.5">
+                        <button type="button" id="kasCancelEditBtn" onclick="cancelKasbonEdit()" class="hidden px-4 py-2.5 bg-blue-950/60 hover:bg-blue-900/60 text-slate-200 border border-blue-500/30 rounded-lg text-sm font-semibold transition items-center gap-1.5">
                             <i class="fa-solid fa-xmark"></i>
                             <span>Batal</span>
                         </button>
@@ -693,12 +917,12 @@
                 <form id="formBiaya" onsubmit="handleExpenseSubmit(event)" class="hidden">
                     <input type="hidden" id="expCategory" value="">
 
-                    <div id="expenseEditBanner" class="hidden items-center justify-between gap-3 px-4 py-2.5 mb-4 rounded-xl bg-amber-50 border border-amber-300 text-xs text-amber-900">
+                    <div id="expenseEditBanner" class="hidden items-center justify-between gap-3 px-4 py-2.5 mb-4 rounded-xl bg-amber-950/70 border border-amber-400/30 text-xs text-amber-200">
                         <div class="flex items-center gap-2 font-semibold">
-                            <i class="fa-solid fa-pen-to-square text-amber-600"></i>
+                            <i class="fa-solid fa-pen-to-square text-amber-400"></i>
                             <span id="expenseEditBannerText">Mode Edit Pemakaian Biaya — ubah data atau kategori lalu klik Simpan Perubahan.</span>
                         </div>
-                        <button type="button" onclick="cancelExpenseEdit()" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-amber-300 rounded-lg font-semibold transition flex-shrink-0">
+                        <button type="button" onclick="cancelExpenseEdit()" class="px-2.5 py-1 bg-amber-900/40 hover:bg-amber-800/60 text-amber-200 border border-amber-400/30 rounded-lg font-semibold transition flex-shrink-0">
                             Batal Edit
                         </button>
                     </div>
@@ -708,37 +932,37 @@
                         <div class="lg:col-span-8 space-y-4">
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div>
-                                    <label for="expDate" class="block text-xs font-semibold text-slate-700 mb-1">Tanggal Biaya *</label>
-                                    <input type="date" id="expDate" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                    <label for="expDate" class="block text-xs font-semibold text-slate-300 mb-1">Tanggal Biaya *</label>
+                                    <input type="date" id="expDate" required class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                                 </div>
                                 <div>
-                                    <label for="expPelaksana" class="block text-xs font-semibold text-slate-700 mb-1">Pelaksana (Pengguna Kasbon) *</label>
-                                    <select id="expPelaksana" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                                    <label for="expPelaksana" class="block text-xs font-semibold text-slate-300 mb-1">Pelaksana (Pengguna Kasbon) *</label>
+                                    <select id="expPelaksana" required class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-[#060e20]">
                                         <option value="Moh. Rengga">Moh. Rengga</option>
                                         <option value="Moh. Ashabil">Moh. Ashabil</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="expPayMethod" class="block text-xs font-semibold text-slate-700 mb-1">Metode Pembayaran *</label>
-                                    <select id="expPayMethod" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                                    <label for="expPayMethod" class="block text-xs font-semibold text-slate-300 mb-1">Metode Pembayaran *</label>
+                                    <select id="expPayMethod" required class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-[#060e20]">
                                         <option value="Tunai Kasbon">Tunai Kasbon</option>
                                         <option value="Transfer Pelaksana">Transfer Rekening Pelaksana</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4 bg-[#060e20]/80 p-4 rounded-xl border border-blue-900/40">
                                 <div class="sm:col-span-2 lg:col-span-2">
-                                    <label for="expTitle" class="block text-xs font-semibold text-slate-700 mb-1">Uraian Item / Keperluan *</label>
-                                    <input type="text" id="expTitle" required placeholder="Contoh: Semen Tiga Roda 50kg" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                                    <label for="expTitle" class="block text-xs font-semibold text-slate-300 mb-1">Uraian Item / Keperluan *</label>
+                                    <input type="text" id="expTitle" required placeholder="Contoh: Semen Tiga Roda 50kg" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-[#060e20]">
                                 </div>
                                 <div>
-                                    <label for="expQty" class="block text-xs font-semibold text-slate-700 mb-1">Qty / Vol *</label>
-                                    <input type="number" id="expQty" required min="0.01" step="any" placeholder="1" oninput="calcTotalBiaya()" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                                    <label for="expQty" class="block text-xs font-semibold text-slate-300 mb-1">Qty / Vol *</label>
+                                    <input type="number" id="expQty" required min="0.01" step="any" placeholder="1" oninput="calcTotalBiaya()" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-[#060e20]">
                                 </div>
                                 <div>
-                                    <label for="expUnit" class="block text-xs font-semibold text-slate-700 mb-1">Satuan *</label>
-                                    <select id="expUnit" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                                    <label for="expUnit" class="block text-xs font-semibold text-slate-300 mb-1">Satuan *</label>
+                                    <select id="expUnit" required class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-[#060e20]">
                                         <option value="sak">sak</option>
                                         <option value="pcs">pcs</option>
                                         <option value="rit">rit</option>
@@ -749,27 +973,27 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="expPrice" class="block text-xs font-semibold text-slate-700 mb-1">Harga Satuan (Rp) *</label>
-                                    <input type="number" id="expPrice" required min="0" placeholder="0" oninput="calcTotalBiaya()" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                                    <label for="expPrice" class="block text-xs font-semibold text-slate-300 mb-1">Harga Satuan (Rp) *</label>
+                                    <input type="number" id="expPrice" required min="0" placeholder="0" oninput="calcTotalBiaya()" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-[#060e20]">
                                 </div>
                                 <div>
-                                    <label for="expTotalDisplay" class="block text-xs font-semibold text-blue-900 mb-1">Total Biaya (Otomatis)</label>
-                                    <input type="text" id="expTotalDisplay" readonly value="Rp 0" class="w-full px-3 py-2 border border-blue-200 bg-blue-50 text-blue-900 font-bold rounded-lg text-sm outline-none">
+                                    <label for="expTotalDisplay" class="block text-xs font-semibold text-sky-300 mb-1">Total Biaya (Otomatis)</label>
+                                    <input type="text" id="expTotalDisplay" readonly value="Rp 0" class="w-full px-3 py-2 border border-sky-500/40 bg-sky-950/60 text-sky-200 font-bold rounded-lg text-sm outline-none">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div>
-                                    <label for="expVendor" class="block text-xs font-semibold text-slate-700 mb-1">Toko / Vendor / Penerima</label>
-                                    <input type="text" id="expVendor" placeholder="Contoh: TB. Makmur Jaya" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                    <label for="expVendor" class="block text-xs font-semibold text-slate-300 mb-1">Toko / Vendor / Penerima</label>
+                                    <input type="text" id="expVendor" placeholder="Contoh: TB. Makmur Jaya" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                                 </div>
                                 <div>
-                                    <label for="expProof" class="block text-xs font-semibold text-slate-700 mb-1">No. Nota / Bukti Transfer</label>
-                                    <input type="text" id="expProof" placeholder="Contoh: INV/2026/089" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                    <label for="expProof" class="block text-xs font-semibold text-slate-300 mb-1">No. Nota / Bukti Transfer</label>
+                                    <input type="text" id="expProof" placeholder="Contoh: INV/2026/089" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                                 </div>
                                 <div>
-                                    <label for="expValidation" class="block text-xs font-semibold text-slate-700 mb-1">Status Validasi Principal</label>
-                                    <select id="expValidation" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                                    <label for="expValidation" class="block text-xs font-semibold text-slate-300 mb-1">Status Validasi Principal</label>
+                                    <select id="expValidation" class="w-full px-3 py-2 border border-blue-900/60 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-[#060e20]">
                                         <option value="Valid">Valid (Disetujui)</option>
                                         <option value="Perlu Nota">Perlu Lampiran Nota</option>
                                         <option value="Revisi">Perlu Revisi</option>
@@ -779,21 +1003,21 @@
                         </div>
 
                         <!-- KANAN: PILIH KATEGORI PENGELUARAN (4 cols) -->
-                        <div class="lg:col-span-4 bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between gap-3">
+                        <div class="lg:col-span-4 bg-[#060e20]/80 border border-blue-900/40 rounded-xl p-4 flex flex-col justify-between gap-3">
                             <div class="space-y-3">
                                 <div class="flex items-start justify-between gap-2">
                                     <div>
-                                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                                            <i class="fa-solid fa-tags text-amber-600"></i> Masuk Kategori Mana?
+                                        <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-tags text-amber-400"></i> Masuk Kategori Mana?
                                         </h3>
-                                        <p class="text-[11px] text-slate-500 mt-0.5">Pilih langsung di sini atau tentukan tepat setelah disimpan di tabel.</p>
+                                        <p class="text-[11px] text-blue-200/70 mt-0.5">Pilih langsung di sini atau tentukan tepat setelah disimpan di tabel.</p>
                                     </div>
                                     <div class="flex items-center gap-1 flex-shrink-0">
-                                        <button type="button" onclick="openCategoryModal(null, true)" class="px-2 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-[11px] font-bold transition flex items-center gap-1" title="Tambah Kategori Baru">
+                                        <button type="button" onclick="openCategoryModal(null, true)" class="px-2 py-1 bg-blue-950/60 hover:bg-blue-900/60 text-sky-300 border border-blue-500/30 rounded-lg text-[11px] font-bold transition flex items-center gap-1" title="Tambah Kategori Baru">
                                             <i class="fa-solid fa-plus"></i>
                                             <span>Baru</span>
                                         </button>
-                                        <button type="button" onclick="openCategorySettingsModal()" class="p-1.5 bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 rounded-lg text-[11px] transition" title="Pengaturan Kategori">
+                                        <button type="button" onclick="openCategorySettingsModal()" class="p-1.5 bg-blue-950/60 hover:bg-blue-900/60 text-slate-200 border border-blue-500/30 rounded-lg text-[11px] transition" title="Pengaturan Kategori">
                                             <i class="fa-solid fa-sliders"></i>
                                         </button>
                                     </div>
@@ -804,20 +1028,20 @@
                                 </div>
                             </div>
 
-                            <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px]">
-                                <span class="text-slate-500 font-medium">Terpilih:</span>
-                                <span id="selectedExpenseCategoryBadge" class="font-bold text-slate-700">Tentukan Setelah Input</span>
+                            <div class="pt-2 border-t border-blue-900/40 flex items-center justify-between text-[11px]">
+                                <span class="text-blue-200/70 font-medium">Terpilih:</span>
+                                <span id="selectedExpenseCategoryBadge" class="font-bold text-slate-200">Tentukan Setelah Input</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 mt-4 border-t border-slate-200">
-                        <p class="text-[11px] text-slate-500 flex items-center gap-1.5">
-                            <i class="fa-solid fa-circle-info text-blue-500"></i>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 mt-4 border-t border-blue-900/40">
+                        <p class="text-[11px] text-blue-200/80 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info text-sky-400"></i>
                             <span>Kategori juga bisa langsung diubah tepat setelah data masuk di tabel <strong>Biaya Lapangan</strong> lalu klik <strong>Simpan Perubahan</strong>.</span>
                         </p>
                         <div class="flex flex-wrap items-center gap-2 flex-shrink-0">
-                            <button type="button" id="expCancelEditBtn" onclick="cancelExpenseEdit()" class="hidden px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-sm font-semibold transition items-center gap-1.5">
+                            <button type="button" id="expCancelEditBtn" onclick="cancelExpenseEdit()" class="hidden px-4 py-2.5 bg-blue-950/60 hover:bg-blue-900/60 text-slate-200 border border-blue-500/30 rounded-lg text-sm font-semibold transition items-center gap-1.5">
                                 <i class="fa-solid fa-xmark"></i>
                                 <span>Batal</span>
                             </button>
@@ -833,53 +1057,53 @@
         </section>
 
         <!-- BAGIAN 4: TABEL RINCIAN PEMAKAIAN BIAYA & MUTASI KAS -->
-        <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <section class="bg-[#0a1836]/90 rounded-2xl border border-blue-500/25 shadow-xl overflow-hidden">
             
             <!-- Header Table Controls -->
-            <div class="p-4 sm:p-5 border-b border-slate-200 space-y-4">
+            <div class="p-4 sm:p-5 border-b border-blue-900/40 space-y-4">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                            <i class="fa-solid fa-table-list text-blue-600"></i> Rincian Pemakaian Biaya & Mutasi Kas
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-table-list text-sky-400"></i> Rincian Pemakaian Biaya & Mutasi Kas
                         </h2>
-                        <p class="text-xs text-slate-500">Transparansi audit dan pertanggungjawaban dana project</p>
+                        <p class="text-xs text-blue-200/80">Transparansi audit dan pertanggungjawaban dana project</p>
                     </div>
 
                     <!-- Main View Mode Switcher -->
-                    <div class="flex bg-slate-100 p-1 rounded-xl gap-1">
-                        <button onclick="switchViewTab('expenses')" id="viewBtnExpenses" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white text-slate-900 shadow-sm">
+                    <div class="flex bg-[#050b18] p-1 rounded-xl gap-1 border border-blue-900/40">
+                        <button onclick="switchViewTab('expenses')" id="viewBtnExpenses" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-900/50">
                             Biaya Lapangan (<span id="countBiaya">0</span>)
                         </button>
-                        <button onclick="switchViewTab('kasbon')" id="viewBtnKasbon" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900">
+                        <button onclick="switchViewTab('kasbon')" id="viewBtnKasbon" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-blue-200 hover:text-white">
                             Riwayat Kasbon (<span id="countKasbon">0</span>)
                         </button>
-                        <button onclick="switchViewTab('investor')" id="viewBtnInvestor" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900">
+                        <button onclick="switchViewTab('investor')" id="viewBtnInvestor" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-blue-200 hover:text-white">
                             Dana Investor (<span id="countInvestor">0</span>)
                         </button>
                     </div>
                 </div>
 
                 <!-- Filters (Tampil Hanya Saat View Biaya Lapangan Active) -->
-                <div id="filterContainer" class="flex flex-wrap items-center gap-3 pt-2 border-t border-slate-100 text-xs">
-                    <div class="flex items-center gap-1.5 font-semibold text-slate-600">
-                        <i class="fa-solid fa-filter text-slate-400"></i> Filter Data:
+                <div id="filterContainer" class="flex flex-wrap items-center gap-3 pt-2 border-t border-blue-900/40 text-xs">
+                    <div class="flex items-center gap-1.5 font-semibold text-slate-200">
+                        <i class="fa-solid fa-filter text-sky-400"></i> Filter Data:
                     </div>
                     
                     <!-- Pelaksana Filter -->
-                    <select id="filterPelaksana" onchange="applyFilters()" class="px-2.5 py-1.5 border border-slate-300 rounded-lg bg-white text-slate-700 focus:outline-none">
+                    <select id="filterPelaksana" onchange="applyFilters()" class="px-2.5 py-1.5 border border-blue-900/60 rounded-lg bg-[#060e20] text-white focus:outline-none focus:border-sky-400">
                         <option value="ALL">Semua Pelaksana</option>
                         <option value="Moh. Rengga">Moh. Rengga</option>
                         <option value="Moh. Ashabil">Moh. Ashabil</option>
                     </select>
 
                     <!-- Kategori Filter -->
-                    <select id="filterCategory" onchange="applyFilters()" class="px-2.5 py-1.5 border border-slate-300 rounded-lg bg-white text-slate-700 focus:outline-none">
+                    <select id="filterCategory" onchange="applyFilters()" class="px-2.5 py-1.5 border border-blue-900/60 rounded-lg bg-[#060e20] text-white focus:outline-none focus:border-sky-400">
                         <option value="ALL">Semua Kategori</option>
                         <!-- Render via JS -->
                     </select>
 
                     <!-- Status Validasi Filter -->
-                    <select id="filterStatus" onchange="applyFilters()" class="px-2.5 py-1.5 border border-slate-300 rounded-lg bg-white text-slate-700 focus:outline-none">
+                    <select id="filterStatus" onchange="applyFilters()" class="px-2.5 py-1.5 border border-blue-900/60 rounded-lg bg-[#060e20] text-white focus:outline-none focus:border-sky-400">
                         <option value="ALL">Semua Status Validasi</option>
                         <option value="Valid">Valid</option>
                         <option value="Perlu Nota">Perlu Nota</option>
@@ -888,7 +1112,7 @@
 
                     <!-- Search Input -->
                     <div class="relative flex-grow max-w-xs ml-auto">
-                        <input type="text" id="filterSearch" oninput="applyFilters()" placeholder="Cari barang, vendor, nota..." class="w-full pl-8 pr-3 py-1.5 border border-slate-300 rounded-lg text-xs focus:outline-none">
+                        <input type="text" id="filterSearch" oninput="applyFilters()" placeholder="Cari barang, vendor, nota..." class="w-full pl-8 pr-3 py-1.5 border border-blue-900/60 rounded-lg bg-[#060e20] text-white placeholder-slate-400 text-xs focus:outline-none focus:border-sky-400">
                         <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2 text-slate-400"></i>
                     </div>
                 </div>
@@ -897,7 +1121,7 @@
             <!-- VIEW 1: TABEL DETAIL PEMAKAIAN BIAYA LAPANGAN -->
             <div id="viewExpensesTable" class="overflow-x-auto custom-scrollbar">
                 <table class="w-full text-left text-xs border-collapse">
-                    <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase font-semibold">
+                    <thead class="bg-[#060d1e] border-b border-blue-900/60 text-sky-200 uppercase font-semibold">
                         <tr>
                             <th class="p-3 w-10 text-center">No</th>
                             <th class="p-3">Tanggal</th>
@@ -913,13 +1137,13 @@
                             <th class="p-3 text-center">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody id="expenseTableBody" class="divide-y divide-slate-100 text-slate-700">
+                    <tbody id="expenseTableBody" class="divide-y divide-blue-950/60 text-slate-100">
                         <!-- Render via JS -->
                     </tbody>
-                    <tfoot class="bg-slate-100 font-bold border-t-2 border-slate-300 text-slate-900">
+                    <tfoot class="bg-[#060d1e] font-bold border-t-2 border-blue-900/80 text-white">
                         <tr>
-                            <td colspan="7" class="p-3 text-right uppercase tracking-wider">Total Realisasi Terfilter:</td>
-                            <td id="tableTotalExpenses" class="p-3 text-right text-sm text-amber-700">Rp 0</td>
+                            <td colspan="7" class="p-3 text-right uppercase tracking-wider text-slate-200">Total Realisasi Terfilter:</td>
+                            <td id="tableTotalExpenses" class="p-3 text-right text-sm text-amber-400 font-black">Rp 0</td>
                             <td colspan="4"></td>
                         </tr>
                     </tfoot>
@@ -929,7 +1153,7 @@
             <!-- VIEW 2: TABEL RIWAYAT KASBON PRINCIPAL -->
             <div id="viewKasbonTable" class="hidden overflow-x-auto custom-scrollbar">
                 <table class="w-full text-left text-xs border-collapse">
-                    <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase font-semibold">
+                    <thead class="bg-[#060d1e] border-b border-blue-900/60 text-sky-200 uppercase font-semibold">
                         <tr>
                             <th class="p-3 w-12 text-center">No</th>
                             <th class="p-3">Tanggal Pencairan</th>
@@ -939,13 +1163,13 @@
                             <th class="p-3 text-center">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody id="kasbonTableBody" class="divide-y divide-slate-100 text-slate-700">
+                    <tbody id="kasbonTableBody" class="divide-y divide-blue-950/60 text-slate-100">
                         <!-- Render via JS -->
                     </tbody>
-                    <tfoot class="bg-slate-100 font-bold border-t-2 border-slate-300 text-slate-900">
+                    <tfoot class="bg-[#060d1e] font-bold border-t-2 border-blue-900/80 text-white">
                         <tr>
-                            <td colspan="4" class="p-3 text-right uppercase">Total Kasbon Dicairkan:</td>
-                            <td id="tableTotalKasbon" class="p-3 text-right text-sm text-blue-700">Rp 0</td>
+                            <td colspan="4" class="p-3 text-right uppercase text-slate-200">Total Kasbon Dicairkan:</td>
+                            <td id="tableTotalKasbon" class="p-3 text-right text-sm text-sky-400 font-black">Rp 0</td>
                             <td></td>
                         </tr>
                     </tfoot>
@@ -955,7 +1179,7 @@
             <!-- VIEW 3: TABEL DANA MASUK INVESTOR -->
             <div id="viewInvestorTable" class="hidden overflow-x-auto custom-scrollbar">
                 <table class="w-full text-left text-xs border-collapse">
-                    <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase font-semibold">
+                    <thead class="bg-[#060d1e] border-b border-blue-900/60 text-sky-200 uppercase font-semibold">
                         <tr>
                             <th class="p-3 w-12 text-center">No</th>
                             <th class="p-3">Tanggal Transfer</th>
@@ -965,13 +1189,13 @@
                             <th class="p-3 text-center">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody id="investorTableBody" class="divide-y divide-slate-100 text-slate-700">
+                    <tbody id="investorTableBody" class="divide-y divide-blue-950/60 text-slate-100">
                         <!-- Render via JS -->
                     </tbody>
-                    <tfoot class="bg-slate-100 font-bold border-t-2 border-slate-300 text-slate-900">
+                    <tfoot class="bg-[#060d1e] font-bold border-t-2 border-blue-900/80 text-white">
                         <tr>
-                            <td colspan="4" class="p-3 text-right uppercase">Total Dana Investor Masuk:</td>
-                            <td id="tableTotalInvestor" class="p-3 text-right text-sm text-emerald-700">Rp 0</td>
+                            <td colspan="4" class="p-3 text-right uppercase text-slate-200">Total Dana Investor Masuk:</td>
+                            <td id="tableTotalInvestor" class="p-3 text-right text-sm text-emerald-400 font-black">Rp 0</td>
                             <td></td>
                         </tr>
                     </tfoot>
@@ -982,7 +1206,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="mt-12 text-center text-xs text-slate-400">
+    <footer class="mt-12 text-center text-xs text-blue-200/60">
         <p>Dashboard Monitoring Keuangan Project &copy; 2026 - Moh. Rengga & Moh. Ashabil Field Accounting System</p>
     </footer>
 
@@ -2358,7 +2582,7 @@
                         data: totals,
                         backgroundColor: colors,
                         borderWidth: 2,
-                        borderColor: '#ffffff'
+                        borderColor: '#0a1631'
                     }]
                 },
                 options: {
@@ -2369,7 +2593,8 @@
                             position: 'right',
                             labels: {
                                 font: { size: 10, family: 'Inter' },
-                                boxWidth: 12
+                                boxWidth: 12,
+                                color: '#e2e8f0'
                             }
                         },
                         tooltip: {
@@ -2422,20 +2647,20 @@
             document.getElementById('viewInvestorTable').classList.add('hidden');
             document.getElementById('filterContainer').classList.add('hidden');
 
-            document.getElementById('viewBtnExpenses').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900";
-            document.getElementById('viewBtnKasbon').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900";
-            document.getElementById('viewBtnInvestor').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900";
+            document.getElementById('viewBtnExpenses').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-blue-200 hover:text-white";
+            document.getElementById('viewBtnKasbon').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-blue-200 hover:text-white";
+            document.getElementById('viewBtnInvestor').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-blue-200 hover:text-white";
 
             if (view === 'expenses') {
                 document.getElementById('viewExpensesTable').classList.remove('hidden');
                 document.getElementById('filterContainer').classList.remove('hidden');
-                document.getElementById('viewBtnExpenses').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white text-slate-900 shadow-sm";
+                document.getElementById('viewBtnExpenses').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-900/50";
             } else if (view === 'kasbon') {
                 document.getElementById('viewKasbonTable').classList.remove('hidden');
-                document.getElementById('viewBtnKasbon').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white text-slate-900 shadow-sm";
+                document.getElementById('viewBtnKasbon').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-900/50";
             } else if (view === 'investor') {
                 document.getElementById('viewInvestorTable').classList.remove('hidden');
-                document.getElementById('viewBtnInvestor').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white text-slate-900 shadow-sm";
+                document.getElementById('viewBtnInvestor').className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-900/50";
             }
         }
 
