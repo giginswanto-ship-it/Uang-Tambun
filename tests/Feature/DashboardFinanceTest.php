@@ -264,4 +264,79 @@ class DashboardFinanceTest extends TestCase
         $this->deleteJson("/api/expenses/{$expId}")->assertOk();
         $this->assertNull(Expense::find($expId));
     }
+
+    public function test_import_local_snapshot_and_seeder_sync_commands(): void
+    {
+        $this->get('/');
+
+        $legacyLocalPayload = [
+            'projectName' => 'Project Tambun Realisasi',
+            'categories' => [
+                ['id' => 'CAT-1', 'name' => 'Material Khusus', 'desc' => 'Besi & Semen', 'color' => '#0284c7', 'budget' => 95000000, 'isActive' => true],
+                ['id' => 'CAT-2', 'name' => 'Jasa Tukang', 'desc' => 'Upah', 'color' => '#8b5cf6', 'budget' => 45000000, 'isActive' => true],
+            ],
+            'categorySettings' => [
+                'defaultCategory' => 'Material Khusus',
+                'sortBy' => 'amount_desc',
+                'showCategorySection' => true,
+                'budgetAlertPercent' => 85,
+            ],
+            'investorFunds' => [
+                ['id' => 'INV-1', 'date' => '2026-11-10', 'investor' => 'Investor Lokal', 'amount' => 120000000, 'desc' => 'Setoran Awal'],
+            ],
+            'kasbonList' => [
+                ['id' => 'KAS-1', 'date' => '2026-11-11', 'pelaksana' => 'Pak Budi', 'amount' => 30000000, 'desc' => 'Kasbon Material'],
+            ],
+            'expenses' => [
+                [
+                    'id' => 'EXP-1',
+                    'date' => '2026-11-12',
+                    'pelaksana' => 'Pak Budi',
+                    'category' => 'Material Khusus',
+                    'categoryId' => 'CAT-1',
+                    'payMethod' => 'Tunai Kasbon',
+                    'title' => 'Pembelian Besi Lokal',
+                    'qty' => 20,
+                    'unit' => 'btg',
+                    'price' => 110000,
+                    'total' => 2200000,
+                    'vendor' => 'TB Tambun',
+                    'proof' => 'NF-01',
+                    'validation' => 'Valid',
+                ],
+            ],
+            'syncSeeder' => false,
+        ];
+
+        $this->postJson(route('api.project.importLocal'), $legacyLocalPayload)
+            ->assertOk()
+            ->assertJsonPath('state.projectName', 'Project Tambun Realisasi')
+            ->assertJsonPath('state.categorySettings.defaultCategory', 'Material Khusus')
+            ->assertJsonPath('state.categorySettings.budgetAlertPercent', 85)
+            ->assertJsonCount(2, 'state.categories')
+            ->assertJsonCount(1, 'state.investorFunds')
+            ->assertJsonCount(1, 'state.kasbonList')
+            ->assertJsonCount(1, 'state.expenses');
+
+        $this->assertDatabaseHas('projects', ['name' => 'Project Tambun Realisasi']);
+        $this->assertDatabaseHas('expenses', ['title' => 'Pembelian Besi Lokal', 'total_amount' => 2200000]);
+
+        $tempPath = storage_path('framework/testing/test_seed_snapshot.json');
+        try {
+            $this->artisan('finance:export-seeder', ['--path' => $tempPath])->assertExitCode(0);
+            $this->assertFileExists($tempPath);
+
+            // Reset DB then import back from temp snapshot file without touching tracked project_seed.json
+            $this->postJson(route('api.project.reset'))->assertOk();
+            $this->assertDatabaseCount('expenses', 0);
+
+            $this->artisan('finance:import-local', ['file' => $tempPath, '--no-seeder' => true])->assertExitCode(0);
+            $this->assertDatabaseHas('projects', ['name' => 'Project Tambun Realisasi']);
+            $this->assertDatabaseHas('expenses', ['title' => 'Pembelian Besi Lokal']);
+        } finally {
+            if (is_file($tempPath)) {
+                @unlink($tempPath);
+            }
+        }
+    }
 }

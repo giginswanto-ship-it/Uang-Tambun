@@ -15,6 +15,8 @@ Route::prefix('api')->group(function () {
     Route::patch('/project', [DashboardController::class, 'updateProject'])->name('api.project.update');
     Route::post('/project/demo', [DashboardController::class, 'loadDemo'])->name('api.project.demo');
     Route::post('/project/reset', [DashboardController::class, 'reset'])->name('api.project.reset');
+    Route::post('/project/import-local', [DashboardController::class, 'importLocal'])->name('api.project.importLocal');
+    Route::post('/project/sync-seeder', [DashboardController::class, 'syncSeeder'])->name('api.project.syncSeeder');
 
     Route::put('/categories/settings/batch', [CategoryController::class, 'saveSettingsBatch'])->name('api.categories.settings.batch');
     Route::post('/categories/reset', [CategoryController::class, 'resetDefaults'])->name('api.categories.reset');

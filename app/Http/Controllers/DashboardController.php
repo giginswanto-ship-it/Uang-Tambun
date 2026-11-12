@@ -79,6 +79,53 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function importLocal(Request $request): JsonResponse
+    {
+        $payload = $request->all();
+        if (isset($payload['snapshot']) && is_string($payload['snapshot'])) {
+            $decoded = $this->service->decodeSnapshotJson($payload['snapshot']);
+            if ($decoded === null) {
+                return response()->json([
+                    'ok' => false,
+                    'message' => 'Format JSON data lokal tidak valid.',
+                ], 422);
+            }
+            $payload = $decoded;
+        }
+
+        if (!is_array($payload) || (!isset($payload['categories']) && !isset($payload['expenses']) && !isset($payload['investorFunds']) && !isset($payload['kasbonList']))) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Data snapshot lokal tidak lengkap.',
+            ], 422);
+        }
+
+        $project = $this->service->getOrInitializeProject();
+        $this->service->importSnapshot($payload, $project);
+
+        $syncSeeder = $request->boolean('syncSeeder', true);
+        if ($syncSeeder) {
+            $this->service->writeSeederSnapshot($project);
+        }
+
+        return response()->json([
+            'ok' => true,
+            'state' => $this->service->getDashboardState($project),
+        ]);
+    }
+
+    public function syncSeeder(): JsonResponse
+    {
+        $project = $this->service->getOrInitializeProject();
+        $path = $this->service->writeSeederSnapshot($project);
+
+        return response()->json([
+            'ok' => true,
+            'path' => $path,
+            'state' => $this->service->getDashboardState($project),
+        ]);
+    }
+
     public function exportCsv(): StreamedResponse
     {
         $project = $this->service->getOrInitializeProject();

@@ -1,0 +1,181 @@
+{
+    "version": 1,
+    "exportedAt": "2026-11-12T10:01:50+00:00",
+    "projectName": "Project Pembangunan Ruko 3 Lantai",
+    "categories": [
+        {
+            "id": "7",
+            "name": "Material",
+            "desc": "Material / Bahan Bangunan",
+            "color": "#0284c7",
+            "budget": 80000000,
+            "isActive": true,
+            "sortOrder": 0
+        },
+        {
+            "id": "8",
+            "name": "Tenaga Kerja",
+            "desc": "Tenaga Kerja / Upah Tukang",
+            "color": "#8b5cf6",
+            "budget": 60000000,
+            "isActive": true,
+            "sortOrder": 1
+        },
+        {
+            "id": "9",
+            "name": "Sewa Alat",
+            "desc": "Sewa Alat & Mesin",
+            "color": "#f59e0b",
+            "budget": 20000000,
+            "isActive": true,
+            "sortOrder": 2
+        },
+        {
+            "id": "10",
+            "name": "Transportasi & BBM",
+            "desc": "Transportasi & BBM",
+            "color": "#10b981",
+            "budget": 15000000,
+            "isActive": true,
+            "sortOrder": 3
+        },
+        {
+            "id": "11",
+            "name": "Perizinan",
+            "desc": "Perizinan & Coordination",
+            "color": "#ec4899",
+            "budget": 10000000,
+            "isActive": true,
+            "sortOrder": 4
+        },
+        {
+            "id": "12",
+            "name": "Operasional & Konsumsi",
+            "desc": "Operasional & Konsumsi Lapangan",
+            "color": "#64748b",
+            "budget": 15000000,
+            "isActive": true,
+            "sortOrder": 5
+        }
+    ],
+    "categorySettings": {
+        "defaultCategory": "",
+        "sortBy": "manual",
+        "showCategorySection": true,
+        "budgetAlertPercent": 80
+    },
+    "investorFunds": [
+        {
+            "id": "4",
+            "date": "2026-11-12",
+            "investor": "PT. Capital Utama (Bpk. Hendra)",
+            "amount": 150000000,
+            "desc": "Dana Modal Term 1 (DP Project)"
+        },
+        {
+            "id": "3",
+            "date": "2026-11-12",
+            "investor": "PT. Capital Utama (Bpk. Hendra)",
+            "amount": 50000000,
+            "desc": "Dana Tambahan Operasional Awal"
+        }
+    ],
+    "kasbonList": [
+        {
+            "id": "4",
+            "date": "2026-11-12",
+            "pelaksana": "Moh. Rengga",
+            "amount": 35000000,
+            "desc": "Kasbon Belanja Bahan Bangunan Utama"
+        },
+        {
+            "id": "3",
+            "date": "2026-11-12",
+            "pelaksana": "Moh. Ashabil",
+            "amount": 25000000,
+            "desc": "Kasbon Pembayaran Upah Tukang & Transport"
+        }
+    ],
+    "expenses": [
+        {
+            "id": "10",
+            "date": "2026-11-12",
+            "pelaksana": "Moh. Rengga",
+            "category": "Material",
+            "categoryId": "7",
+            "payMethod": "Tunai Kasbon",
+            "title": "Semen Tiga Roda 50kg",
+            "qty": 100,
+            "unit": "sak",
+            "price": 65000,
+            "total": 6500000,
+            "vendor": "TB. Jaya Makmur",
+            "proof": "INV/2026/001",
+            "validation": "Valid"
+        },
+        {
+            "id": "9",
+            "date": "2026-11-12",
+            "pelaksana": "Moh. Rengga",
+            "category": "Material",
+            "categoryId": "7",
+            "payMethod": "Tunai Kasbon",
+            "title": "Besi Beton 12mm Full",
+            "qty": 150,
+            "unit": "pcs",
+            "price": 115000,
+            "total": 17250000,
+            "vendor": "Toko Besi Sentosa",
+            "proof": "INV/2026/004",
+            "validation": "Valid"
+        },
+        {
+            "id": "8",
+            "date": "2026-11-12",
+            "pelaksana": "Moh. Ashabil",
+            "category": "Tenaga Kerja",
+            "categoryId": "8",
+            "payMethod": "Transfer Pelaksana",
+            "title": "Upah Minggu 1 Tukang & Kenek (6 Org)",
+            "qty": 1,
+            "unit": "paket",
+            "price": 12500000,
+            "total": 12500000,
+            "vendor": "Mandor Supri",
+            "proof": "TRF-BCA-9821",
+            "validation": "Valid"
+        },
+        {
+            "id": "7",
+            "date": "2026-11-12",
+            "pelaksana": "Moh. Ashabil",
+            "category": "Transportasi & BBM",
+            "categoryId": "10",
+            "payMethod": "Tunai Kasbon",
+            "title": "BBM Pickup & Sewa Mobil Logistik",
+            "qty": 5,
+            "unit": "hari",
+            "price": 350000,
+            "total": 1750000,
+            "vendor": "Rental Transport",
+            "proof": "STR-0912",
+            "validation": "Perlu Nota"
+        },
+        {
+            "id": "6",
+            "date": "2026-11-12",
+            "pelaksana": "Moh. Rengga",
+            "category": "Operasional & Konsumsi",
+            "categoryId": "12",
+            "payMethod": "Tunai Kasbon",
+            "title": "Konsumsi Harian Pekerja & Air Mineral",
+            "qty": 7,
+            "unit": "hari",
+            "price": 150000,
+            "total": 1050000,
+            "vendor": "Warung Bu Siti",
+            "proof": "Nota Manual #02",
+            "validation": "Valid"
+        }
+    ]
+}
