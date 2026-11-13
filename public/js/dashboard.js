@@ -522,55 +522,55 @@ function renderCategoryList() {
             const pct = Math.round((totalNominal / cat.budget) * 100);
             const barWidth = Math.min(100, pct);
             let barColor = 'bg-emerald-500';
-            let pctTextClass = 'text-emerald-700';
+            let pctTextClass = 'text-emerald-400 font-bold';
             let statusText = 'Aman';
             if (pct > 100) {
                 barColor = 'bg-rose-500';
-                pctTextClass = 'text-rose-700 font-bold';
+                pctTextClass = 'text-rose-400 font-bold';
                 statusText = 'Melebihi Pagu';
             } else if (pct >= alertPct) {
                 barColor = 'bg-amber-500';
-                pctTextClass = 'text-amber-700 font-bold';
+                pctTextClass = 'text-amber-400 font-bold';
                 statusText = 'Mendekati Batas';
             }
             budgetHtml = `
-                <div class="mt-2 pt-2 border-t border-slate-200/80 space-y-1">
-                    <div class="flex items-center justify-between text-[10px]">
-                        <span class="text-slate-500">Anggaran: <span class="font-mono font-semibold text-slate-700">${formatRupiah(cat.budget)}</span></span>
+                <div class="mt-2.5 pt-2.5 border-t border-blue-900/50 space-y-1.5">
+                    <div class="flex items-center justify-between text-[11px]">
+                        <span class="text-blue-200/80">Anggaran: <span class="font-mono font-bold text-white">${formatRupiah(cat.budget)}</span></span>
                         <span class="${pctTextClass}">${pct}% (${statusText})</span>
                     </div>
-                    <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                        <div class="${barColor} h-full rounded-full transition-all" style="width: ${barWidth}%"></div>
+                    <div class="w-full h-2 bg-[#030816] border border-blue-900/60 rounded-full overflow-hidden shadow-inner">
+                        <div class="${barColor} h-full rounded-full transition-all duration-500 shadow-sm" style="width: ${barWidth}%"></div>
                     </div>
                 </div>
             `;
         }
 
         const card = document.createElement('div');
-        card.className = `flex flex-col justify-between gap-2.5 p-3.5 rounded-xl border transition ${isInactive ? 'border-slate-200 bg-slate-100/70 opacity-75' : 'border-slate-200 bg-slate-50/70 hover:bg-white hover:shadow-sm'}`;
+        card.className = `flex flex-col justify-between gap-3 p-4 rounded-xl border transition shadow-lg ${isInactive ? 'border-blue-900/40 bg-[#060e22]/70 opacity-60' : 'border-blue-500/25 bg-[#060f24] hover:bg-[#0a1836] hover:border-blue-400/50'}`;
         card.innerHTML = `
             <div class="flex items-start justify-between gap-3">
                 <div class="flex items-start gap-3 min-w-0">
-                    <span class="w-3.5 h-3.5 rounded-full flex-shrink-0 mt-1 shadow-sm ring-2 ring-white" style="background-color: ${escapeHtml(cat.color)};"></span>
+                    <span class="w-3.5 h-3.5 rounded-full flex-shrink-0 mt-1 shadow-sm ring-2 ring-white/60" style="background-color: ${escapeHtml(cat.color)};"></span>
                     <div class="min-w-0">
                         <div class="flex items-center gap-1.5 flex-wrap">
-                            <h3 class="font-bold text-sm text-slate-900 truncate" title="${escapeHtml(cat.name)}">${escapeHtml(cat.name)}</h3>
-                            ${isDefault ? '<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 text-[10px] font-bold">Default</span>' : ''}
-                            ${isInactive ? '<span class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 text-[10px] font-semibold">Nonaktif</span>' : ''}
+                            <h3 class="font-bold text-sm text-white truncate" title="${escapeHtml(cat.name)}">${escapeHtml(cat.name)}</h3>
+                            ${isDefault ? '<span class="px-2 py-0.5 rounded-full bg-blue-500/20 text-sky-300 border border-blue-400/30 text-[10px] font-bold">Default</span>' : ''}
+                            ${isInactive ? '<span class="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 text-[10px] font-semibold">Nonaktif</span>' : ''}
                         </div>
-                        ${descText ? `<p class="text-[11px] text-slate-500 truncate" title="${escapeHtml(descText)}">${escapeHtml(descText)}</p>` : ''}
-                        <div class="flex items-center gap-2 mt-1 text-[11px] text-slate-500 font-medium">
-                            <span class="bg-white border border-slate-200 px-1.5 py-0.5 rounded text-slate-600">${stat.count} transaksi</span>
-                            <span class="font-mono text-slate-700">${formatRupiah(totalNominal)}</span>
+                        ${descText ? `<p class="text-[11px] text-blue-200/70 truncate mt-0.5" title="${escapeHtml(descText)}">${escapeHtml(descText)}</p>` : ''}
+                        <div class="flex items-center gap-2 mt-2 text-[11px] font-medium">
+                            <span class="bg-blue-950/80 border border-blue-500/30 px-2 py-0.5 rounded-md text-sky-200 font-semibold shadow-sm">${stat.count} transaksi</span>
+                            <span class="font-mono font-bold text-emerald-400 text-xs">${formatRupiah(totalNominal)}</span>
                         </div>
                     </div>
                 </div>
                 <div class="flex items-center gap-1.5 flex-shrink-0">
-                    <button type="button" onclick="openCategoryModal('${escapeHtml(cat.id)}')" class="px-2.5 py-1.5 bg-white hover:bg-blue-50 text-blue-600 hover:text-blue-700 border border-slate-200 hover:border-blue-200 rounded-lg text-[11px] font-semibold transition flex items-center gap-1 shadow-sm" title="Edit Kategori">
+                    <button type="button" onclick="openCategoryModal('${escapeHtml(cat.id)}')" class="px-2.5 py-1.5 bg-blue-950/80 hover:bg-blue-900 text-sky-300 border border-blue-500/35 rounded-lg text-[11px] font-bold transition flex items-center gap-1 shadow-sm" title="Edit Kategori">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span>Edit</span>
                     </button>
-                    <button type="button" onclick="openDeleteCategoryModal('${escapeHtml(cat.id)}')" class="px-2.5 py-1.5 bg-white hover:bg-rose-50 text-rose-600 hover:text-rose-700 border border-slate-200 hover:border-rose-200 rounded-lg text-[11px] font-semibold transition flex items-center gap-1 shadow-sm" title="Hapus Kategori">
+                    <button type="button" onclick="openDeleteCategoryModal('${escapeHtml(cat.id)}')" class="px-2.5 py-1.5 bg-rose-950/80 hover:bg-rose-900 text-rose-300 border border-rose-500/35 rounded-lg text-[11px] font-bold transition flex items-center gap-1 shadow-sm" title="Hapus Kategori">
                         <i class="fa-solid fa-trash-can"></i>
                         <span>Hapus</span>
                     </button>
@@ -658,17 +658,17 @@ function renderExpenseRightCategoryList() {
     deferBtn.type = 'button';
     deferBtn.setAttribute('onclick', 'clearExpenseCategorySelection()');
     deferBtn.className = deferSelected
-        ? 'w-full text-left p-2.5 rounded-xl border-2 border-slate-700 bg-white shadow-sm transition flex items-center justify-between gap-2'
-        : 'w-full text-left p-2.5 rounded-xl border border-dashed border-slate-300 bg-white/70 hover:bg-white transition flex items-center justify-between gap-2';
+        ? 'w-full text-left p-2.5 rounded-xl border-2 border-sky-400 bg-blue-950/90 shadow-md transition flex items-center justify-between gap-2'
+        : 'w-full text-left p-2.5 rounded-xl border border-dashed border-blue-900/60 bg-[#060e20]/70 hover:bg-blue-950/40 transition flex items-center justify-between gap-2';
     deferBtn.innerHTML = `
         <div class="flex items-center gap-2 min-w-0">
-            <span class="w-3 h-3 rounded-full bg-slate-300 flex-shrink-0"></span>
+            <span class="w-3 h-3 rounded-full bg-slate-400 flex-shrink-0"></span>
             <div class="min-w-0">
-                <div class="font-semibold text-xs text-slate-800 truncate">Tentukan Setelah Input</div>
-                <div class="text-[10px] text-slate-500 truncate">Pilih kategori langsung di tabel setelah simpan</div>
+                <div class="font-bold text-xs text-white truncate">Tentukan Setelah Input</div>
+                <div class="text-[10px] text-blue-200/70 truncate">Pilih kategori langsung di tabel setelah simpan</div>
             </div>
         </div>
-        <span class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${deferSelected ? 'bg-slate-800 text-white' : 'border border-slate-300 text-transparent'}">
+        <span class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${deferSelected ? 'bg-sky-500 text-white' : 'border border-blue-900/60 text-transparent'}">
             <i class="fa-solid fa-check text-[9px]"></i>
         </span>
     `;
@@ -676,7 +676,7 @@ function renderExpenseRightCategoryList() {
 
     if (activeCategories.length === 0) {
         const emptyNote = document.createElement('div');
-        emptyNote.className = 'p-3 rounded-xl border border-dashed border-slate-300 bg-white text-center text-[11px] text-slate-500';
+        emptyNote.className = 'p-3 rounded-xl border border-dashed border-blue-900/60 bg-[#060e20]/70 text-center text-[11px] text-blue-200/70';
         emptyNote.innerHTML = 'Tidak ada kategori aktif. Klik <strong>+ Baru</strong> atau buka <strong>Pengaturan Kategori</strong>.';
         listEl.appendChild(emptyNote);
         return;
@@ -694,17 +694,17 @@ function renderExpenseRightCategoryList() {
         btn.type = 'button';
         btn.setAttribute('onclick', `selectExpenseCategory('${escapeHtml(cat.id)}')`);
         btn.className = isSelected
-            ? 'w-full text-left p-2.5 rounded-xl border-2 border-amber-500 bg-amber-50 shadow-sm transition flex items-center justify-between gap-2'
-            : 'w-full text-left p-2.5 rounded-xl border border-slate-200 bg-white hover:border-amber-300 hover:bg-amber-50/40 transition flex items-center justify-between gap-2';
+            ? 'w-full text-left p-2.5 rounded-xl border-2 border-amber-400 bg-amber-950/70 shadow-md transition flex items-center justify-between gap-2'
+            : 'w-full text-left p-2.5 rounded-xl border border-blue-900/50 bg-[#060e20]/70 hover:border-amber-400/50 hover:bg-[#0a1836] transition flex items-center justify-between gap-2';
         btn.innerHTML = `
             <div class="flex items-start gap-2.5 min-w-0">
                 <span class="w-3 h-3 rounded-full flex-shrink-0 mt-1 shadow-sm" style="background-color: ${escapeHtml(cat.color)};"></span>
                 <div class="min-w-0">
-                    <div class="font-bold text-xs text-slate-900 truncate">${escapeHtml(cat.name)}</div>
-                    ${budgetHint ? `<div class="text-[10px] text-slate-500 truncate">${escapeHtml(budgetHint)}</div>` : ''}
+                    <div class="font-bold text-xs text-white truncate">${escapeHtml(cat.name)}</div>
+                    ${budgetHint ? `<div class="text-[10px] text-blue-200/70 truncate">${escapeHtml(budgetHint)}</div>` : ''}
                 </div>
             </div>
-            <span class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${isSelected ? 'bg-amber-600 text-white' : 'border border-slate-300 text-transparent'}">
+            <span class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${isSelected ? 'bg-amber-500 text-white' : 'border border-blue-900/60 text-transparent'}">
                 <i class="fa-solid fa-check text-[9px]"></i>
             </span>
         `;
@@ -943,45 +943,45 @@ function renderCategorySettingsList() {
         const canMoveDown = isManualSort && idx < displayCategories.length - 1;
 
         const row = document.createElement('div');
-        row.className = `flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl border transition ${isActive ? 'bg-white border-slate-200' : 'bg-slate-100/80 border-slate-200 opacity-75'}`;
+        row.className = `flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl border transition ${isActive ? 'bg-[#060f24] border-blue-500/25' : 'bg-[#040a18]/70 border-blue-900/40 opacity-60'}`;
         row.innerHTML = `
             <div class="flex items-start gap-3 min-w-0">
                 <div class="flex flex-col gap-0.5 flex-shrink-0 pt-0.5">
-                    <button type="button" onclick="moveCategoryOrder('${escapeHtml(cat.id)}', -1)" ${canMoveUp ? '' : 'disabled'} class="w-6 h-5 rounded border border-slate-200 bg-slate-50 hover:bg-slate-200 text-slate-600 text-[10px] flex items-center justify-center transition disabled:opacity-30 disabled:cursor-not-allowed" title="Geser Naik">
+                    <button type="button" onclick="moveCategoryOrder('${escapeHtml(cat.id)}', -1)" ${canMoveUp ? '' : 'disabled'} class="w-6 h-5 rounded border border-blue-900/50 bg-[#060e20] hover:bg-blue-950 text-blue-200 text-[10px] flex items-center justify-center transition disabled:opacity-20 disabled:cursor-not-allowed" title="Geser Naik">
                         <i class="fa-solid fa-chevron-up"></i>
                     </button>
-                    <button type="button" onclick="moveCategoryOrder('${escapeHtml(cat.id)}', 1)" ${canMoveDown ? '' : 'disabled'} class="w-6 h-5 rounded border border-slate-200 bg-slate-50 hover:bg-slate-200 text-slate-600 text-[10px] flex items-center justify-center transition disabled:opacity-30 disabled:cursor-not-allowed" title="Geser Turun">
+                    <button type="button" onclick="moveCategoryOrder('${escapeHtml(cat.id)}', 1)" ${canMoveDown ? '' : 'disabled'} class="w-6 h-5 rounded border border-blue-900/50 bg-[#060e20] hover:bg-blue-950 text-blue-200 text-[10px] flex items-center justify-center transition disabled:opacity-20 disabled:cursor-not-allowed" title="Geser Turun">
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                 </div>
-                <span class="w-3.5 h-3.5 rounded-full flex-shrink-0 mt-1.5 ring-2 ring-white shadow-sm" style="background-color: ${escapeHtml(cat.color)};"></span>
+                <span class="w-3.5 h-3.5 rounded-full flex-shrink-0 mt-1.5 ring-2 ring-white/60 shadow-sm" style="background-color: ${escapeHtml(cat.color)};"></span>
                 <div class="min-w-0">
                     <div class="flex items-center gap-1.5 flex-wrap">
-                        <span class="font-bold text-xs sm:text-sm text-slate-900">${escapeHtml(cat.name)}</span>
-                        ${activeSettings.defaultCategory === cat.name ? '<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 text-[10px] font-bold">Default</span>' : ''}
-                        ${!isActive ? '<span class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 text-[10px] font-semibold">Nonaktif</span>' : ''}
+                        <span class="font-bold text-xs sm:text-sm text-white">${escapeHtml(cat.name)}</span>
+                        ${activeSettings.defaultCategory === cat.name ? '<span class="px-2 py-0.5 rounded-full bg-blue-500/20 text-sky-300 border border-blue-400/30 text-[10px] font-bold">Default</span>' : ''}
+                        ${!isActive ? '<span class="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 text-[10px] font-semibold">Nonaktif</span>' : ''}
                     </div>
-                    <div class="text-[11px] text-slate-500 flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5">
+                    <div class="text-[11px] text-blue-200/70 flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5">
                         <span>${stat.count} transaksi</span>
                         <span>•</span>
-                        <span>Terpakai: <strong class="text-slate-700 font-mono">${formatRupiah(stat.total)}</strong></span>
+                        <span>Terpakai: <strong class="text-emerald-400 font-mono font-bold">${formatRupiah(stat.total)}</strong></span>
                     </div>
                 </div>
             </div>
             <div class="flex flex-wrap items-center gap-1.5 flex-shrink-0 self-end sm:self-center">
-                <div class="flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100" title="Budget kategori (Rp)">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wide whitespace-nowrap">Budget Rp</span>
-                    <input type="number" min="0" step="10000" data-category-budget-id="${escapeHtml(cat.id)}" value="${cat.budget > 0 ? cat.budget : ''}" placeholder="0" oninput="onCategoryDraftBudgetChange('${escapeHtml(cat.id)}', this.value)" class="w-28 bg-transparent text-xs font-bold font-mono text-slate-800 text-right focus:outline-none">
+                <div class="flex items-center gap-1.5 bg-[#030816] border border-blue-900/60 rounded-lg px-2.5 py-1 focus-within:border-sky-400 focus-within:ring-2 focus-within:ring-sky-500/20" title="Budget kategori (Rp)">
+                    <span class="text-[10px] font-bold text-blue-300 uppercase tracking-wide whitespace-nowrap">Budget Rp</span>
+                    <input type="number" min="0" step="10000" data-category-budget-id="${escapeHtml(cat.id)}" value="${cat.budget > 0 ? cat.budget : ''}" placeholder="0" oninput="onCategoryDraftBudgetChange('${escapeHtml(cat.id)}', this.value)" class="w-28 bg-transparent text-xs font-bold font-mono text-white text-right focus:outline-none">
                 </div>
-                <button type="button" onclick="toggleCategoryActive('${escapeHtml(cat.id)}')" class="px-2.5 py-1.5 rounded-lg text-[11px] font-semibold border transition flex items-center gap-1 ${isActive ? 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border-emerald-200' : 'bg-slate-200 hover:bg-slate-300 text-slate-700 border-slate-300'}" title="Aktif/Nonaktifkan Kategori">
+                <button type="button" onclick="toggleCategoryActive('${escapeHtml(cat.id)}')" class="px-2.5 py-1.5 rounded-lg text-[11px] font-semibold border transition flex items-center gap-1 ${isActive ? 'bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 border-emerald-500/40' : 'bg-slate-800 hover:bg-slate-700 text-slate-400 border-slate-700'}" title="Aktif/Nonaktifkan Kategori">
                     <i class="fa-solid ${isActive ? 'fa-toggle-on' : 'fa-toggle-off'}"></i>
                     <span>${isActive ? 'Aktif' : 'Nonaktif'}</span>
                 </button>
-                <button type="button" onclick="openCategoryModal('${escapeHtml(cat.id)}')" class="px-2.5 py-1.5 bg-white hover:bg-blue-50 text-blue-600 border border-slate-200 hover:border-blue-200 rounded-lg text-[11px] font-semibold transition flex items-center gap-1" title="Edit Kategori">
+                <button type="button" onclick="openCategoryModal('${escapeHtml(cat.id)}')" class="px-2.5 py-1.5 bg-blue-950/80 hover:bg-blue-900 text-sky-300 border border-blue-500/35 rounded-lg text-[11px] font-bold transition flex items-center gap-1" title="Edit Kategori">
                     <i class="fa-solid fa-pen-to-square"></i>
                     <span>Edit</span>
                 </button>
-                <button type="button" onclick="openDeleteCategoryModal('${escapeHtml(cat.id)}')" class="px-2.5 py-1.5 bg-white hover:bg-rose-50 text-rose-600 border border-slate-200 hover:border-rose-200 rounded-lg text-[11px] font-semibold transition flex items-center gap-1" title="Hapus Kategori">
+                <button type="button" onclick="openDeleteCategoryModal('${escapeHtml(cat.id)}')" class="px-2.5 py-1.5 bg-rose-950/80 hover:bg-rose-900 text-rose-300 border border-rose-500/35 rounded-lg text-[11px] font-bold transition flex items-center gap-1" title="Hapus Kategori">
                     <i class="fa-solid fa-trash-can"></i>
                     <span>Hapus</span>
                 </button>

@@ -248,6 +248,23 @@
             color: #ffffff !important;
         }
 
+        /* Kategori Biaya Cards Specific Dark Luxury Rules */
+        #categoryListContainer > div {
+            background-color: #060f24 !important;
+            border: 1px solid rgba(59, 130, 246, 0.25) !important;
+            box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6) !important;
+        }
+        #categoryListContainer > div:hover {
+            background-color: #0a1836 !important;
+            border-color: rgba(96, 165, 250, 0.45) !important;
+        }
+        #categoryListContainer h3 {
+            color: #ffffff !important;
+        }
+        #categoryListContainer p {
+            color: #93c5fd !important;
+        }
+
         /* Modals and Dialogs */
         .fixed.inset-0.z-50,
         .fixed.inset-0.z-\[55\],
