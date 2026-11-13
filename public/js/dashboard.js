@@ -49,6 +49,36 @@ function getCsrfToken() {
     return (meta && meta.getAttribute('content')) || DASHBOARD_CONFIG.csrfToken || '';
 }
 
+function updateConnectionBadge(isOnline) {
+    const badge = document.getElementById('serverConnectionBadge');
+    if (!badge) return;
+    if (isOnline) {
+        badge.className = 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1.5 cursor-pointer transition hover:scale-105';
+        badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>Server Online (SQL)</span>';
+    } else {
+        badge.className = 'bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[10px] px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1.5 cursor-pointer transition hover:scale-105';
+        badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span><span>Server Terputus (Klik Hubungkan)</span>';
+    }
+}
+
+async function checkServerHealth(quiet = false) {
+    const checkUrl = ROUTES.state || '/api/state';
+    try {
+        const res = await fetch(checkUrl, {
+            headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+            updateConnectionBadge(true);
+            if (!quiet) showToast('Server backend Laravel terhubung & siap menyimpan data!', 'success');
+            return true;
+        }
+    } catch (_) {
+        updateConnectionBadge(false);
+        if (!quiet) showToast('Server backend belum terhubung. Pastikan server aktif (JALANKAN_SERVER.bat).', 'warning');
+        return false;
+    }
+}
+
 async function apiRequest(url, method = 'GET', payload = null) {
     const options = {
         method,
@@ -66,8 +96,10 @@ async function apiRequest(url, method = 'GET', payload = null) {
     let response;
     try {
         response = await fetch(url, options);
+        updateConnectionBadge(true);
     } catch (networkErr) {
-        showToast('Gagal terhubung ke server Laravel. Periksa koneksi server.', 'warning');
+        updateConnectionBadge(false);
+        showToast('Gagal terhubung ke server backend (port 8000). Pastikan server aktif atau klik JALANKAN_SERVER.bat.', 'warning');
         throw networkErr;
     }
 
@@ -108,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setDefaultDates();
     selectedExpenseCategory = appState.categorySettings?.defaultCategory || '';
     renderAll();
+    checkServerHealth(true);
 });
 
 // Tutup modal teratas / input inline dengan tombol Escape

@@ -21,7 +21,10 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <span class="text-xs uppercase tracking-wider font-bold text-sky-400">Sistem Kas & Kasbon Project</span>
-                            <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] px-2 py-0.5 rounded-full font-medium">Live System</span>
+                            <span id="serverConnectionBadge" onclick="checkServerHealth()" class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1.5 cursor-pointer transition hover:scale-105" title="Status koneksi ke server backend (Klik untuk cek ulang)">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span id="serverConnectionText">Server Terhubung</span>
+                            </span>
                         </div>
                         <div class="flex items-center gap-2 group flex-wrap">
                             <h1 id="projectNameDisplay" class="text-xl sm:text-2xl font-black tracking-tight text-white">{{ $initialState['projectName'] }}</h1>
@@ -756,17 +759,17 @@
         window.__DASHBOARD_CONFIG__ = {
             csrfToken: @json(csrf_token()),
             routes: {
-                state: @json(route('api.state')),
-                projectUpdate: @json(route('api.project.update')),
-                projectDemo: @json(route('api.project.demo')),
-                projectReset: @json(route('api.project.reset')),
-                exportCsv: @json(route('export.csv')),
-                categoriesStore: @json(route('api.categories.store')),
-                categoriesSettingsBatch: @json(route('api.categories.settings.batch')),
-                categoriesReset: @json(route('api.categories.reset')),
-                investorsStore: @json(route('api.investors.store')),
-                kasbonsStore: @json(route('api.kasbons.store')),
-                expensesStore: @json(route('api.expenses.store'))
+                state: @json(route('api.state', [], false)),
+                projectUpdate: @json(route('api.project.update', [], false)),
+                projectDemo: @json(route('api.project.demo', [], false)),
+                projectReset: @json(route('api.project.reset', [], false)),
+                exportCsv: @json(route('export.csv', [], false)),
+                categoriesStore: @json(route('api.categories.store', [], false)),
+                categoriesSettingsBatch: @json(route('api.categories.settings.batch', [], false)),
+                categoriesReset: @json(route('api.categories.reset', [], false)),
+                investorsStore: @json(route('api.investors.store', [], false)),
+                kasbonsStore: @json(route('api.kasbons.store', [], false)),
+                expensesStore: @json(route('api.expenses.store', [], false))
             }
         };
     </script>
